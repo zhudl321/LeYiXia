@@ -69,7 +69,13 @@ class IndexAction extends BaseAction {
 			//$data['list'][$k]['tag']=M('share_tags')->where(array('share_id'=>$v['id']))->select();
 			$data['list'][$k]['first_char'] = str($v['content'],0,1,"utf-8",false);
 			$data['list'][$k]['content'] = str($v['content'],1,null,"utf-8",false);
+			$avatar = get_user($v['uid'],'avatar');
+			$data['list'][$k]['avatar'] = $avatar?$avatar:"default.png";
+			$nick = get_user($v['uid'],'nick');
+			$data['list'][$k]['nick'] = $nick?$nick:"网友";
+			$data['list'][$k]['date'] = time_tran($v['add_time']);
 		}
+		
 		$this->assign('data',$data);
 		$this->assign('title',$title);
 		//$this->hot_tag(20);

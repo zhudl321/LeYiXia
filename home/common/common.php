@@ -125,4 +125,26 @@ function word($str)
 	}
 	return $str_key;
 }
+
+
+function time_tran($time){
+   $date = date("Y-m-d",$time);
+
+   $dur = time() - $time;
+   if($dur < 0){
+    return $date;
+    }elseif($dur < 60){
+     return $dur.'秒前';
+    }elseif($dur < 3600){
+      return floor($dur/60).'分钟前';
+    }elseif($dur < 86400){
+       return floor($dur/3600).'小时前';
+    }elseif($dur < 259200){//3天内
+        return floor($dur/86400).'天前';
+   }else{
+        return $the_time;
+   }
+    
+}
+
 ?>

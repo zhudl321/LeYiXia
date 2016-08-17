@@ -26,7 +26,7 @@ class PullAction extends BaseAction {
 			$foo=  new  QL\QueryList();
 
 			//采集某页面所有的图片
-			$res = $foo->Query('http://lengxiaohua.com/new',array(
+			$res = $foo->Query('http://lengxiaohua.com/new?page_num=6',array(
 			    'content' => array('.para_can','text')
 			    ))->data;
 			
