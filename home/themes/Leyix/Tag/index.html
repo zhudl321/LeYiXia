@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$title}乐一下-笑话,最新冷笑话，搞笑图片，搞笑图片制作，脑残笑话，爆笑图片</title>
+<include file='Public:common_file' />
+</head>
+<body>
+<!-- header --> 
+<include file='Public:header' /> 
+<!-- //header --> 
+
+<!-- container -->
+<div class="container"> 
+  <!-- content -->
+  <div id="content" class="content clearfix"> 
+    <!-- content -->
+    <div class="main fl">
+      <div class="article">
+        <h2>热门标签</h2>
+        <div class="block labels-box"> 
+        <volist name='hot_tag' id='l_h_t'> <a href="{:U('/tag/'.$l_h_t['name'].'')}">{$l_h_t.name}</a> </volist>
+        </div>
+      </div>
+    </div>
+    <!-- //content --> 
+    
+    <!-- sidebar --> 
+    <!-- sidebar -->
+    <div class="sidebar fr">
+      <div class="article follow">
+        <h3>关注收听</h3>
+        <ul>
+          <li class="inline-block f-sina"> <a href="http://weibo.com/hahamx" target="_blank">新浪微博</a> </li>
+          <!--
+        -->
+          <li class="inline-block f-qq"> <a href="http://t.qq.com/haha-mx" target="_blank">腾讯微博</a> </li>
+          <!--
+        -->
+          <li class="inline-block f-rss"> <a href="http://feed.feedsky.com/hahamx2" target="_blank">RSS订阅</a> </li>
+          <!--
+        -->
+          <li class="inline-block f-feed"> <a href="http://www.haha.mx/joke/848402" title="关注“哈哈MX”官方微信，随时随地看笑话" target="_blank">哈哈微信</a> </li>
+        </ul>
+      </div>
+      <div class="article">
+        <h3>网址推荐</h3>
+        <div class="recommend-url"> <a href="http://www.maxthon.cn/" target="_blank">傲游云浏览器</a> <a href="http://i.maxthon.cn/" target="_blank">傲游今日</a> <a href="http://www.hao123.com/" target="_blank">hao123网址导航</a> <a href="http://v2.tjj.com/click.php?id=10651&tourl=http%3A%2F%2Fwww.114la.com%2F" target="_blank">114啦网址导航</a> </div>
+      </div>
+      <div id="sticky" class="sticky-block"> 
+        <!--<div class="hezuo-tao mt-20">
+    <iframe id="hezuo-iframe" width="306" scrolling="no" height="256" frameborder="0" allowtransparency="no" src="/hezuo/t-300.htm"></iframe>
+</div>-->
+        <dl class="article labels">
+          
+          <dd class="clearfix">
+            
+          </dd>
+        </dl>
+      </div>
+    </div>
+    <!-- //sidebar --> <!-- //sidebar --> 
+  </div>
+  <!-- //content --> 
+</div>
+<!-- //container --> 
+
+<!-- footer--> 
+<include file='Public:footer' /> 
+<!-- //footer--> 
+<script type="text/javascript" id="bdshare_js" data="type=tools&mini=1" ></script> 
+<script type="text/javascript" id="bdshell_js"></script> 
+<script type="text/javascript">
+            /**
+             * 在这里定义bds_config
+             */
+            var bds_config = {};
+        
+            document.getElementById('bdshell_js').src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+        </script>
+</body>
+</html>

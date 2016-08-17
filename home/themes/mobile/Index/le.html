@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>{$le.title}-冷笑话,内涵图,搞笑图片,笑话分享-乐一下</title>
+<meta name="keywords" content="{$le.title|word}"/>
+<meta name="description" content="{$le.content|strip_tags|str=0,100}"/>
+<link href="http://www.leyix.com/static/home/css/styles.css" rel="stylesheet" type="text/css">
+<include file='Public:common_file' />
+</head>
+<body>
+<include file='Public:header' />
+<article>
+  <div class="container-fluid" style="padding:0px 5px 0px 5px;">
+    <div class="row-fluid">
+      <div class="widget row-fluid">
+      
+        <div class="whead">
+          <div class="clear"></div>
+        </div>
+        <ul class="updates">
+          
+          <!--单条笑话-->
+          <li>
+            <div class="wNews"> <a href="" title="" class="headline"><img class="le_img" src="http://www.leyix.com/static/home/images/xubox_loading0.gif" data-original="http://www.leyix.com/uploads/avatar/{$le.uid|get_user=avatar}" alt="" style="width:40px;"></a>
+              <div class="announce"> <a href="#" title="">{$le.uid|get_user=nick}</a> <span>{$le.add_time|date='m-d H:i',###} 发布</span></div>
+              <div class="mt10">
+                <h4 class="pt0 mb10"><i class="icon-quote-left"></i>{$le.title}</h4>
+                <neq name="le.content" value=''>
+                  <p class="initialism" style="font-size:13px;">{$le.content}<i class="icon-quote-right"></i></p>
+                </neq>
+                <p>
+                  <gt name='le.img_id' value='0'><img class="le_img img-polaroid" src="http://www.leyix.com/static/home/images/xubox_loading0.gif" data-original="http://www.leyix.com/uploads/img/{$le.img_id|get_img=filename}"></gt>
+                </p>
+                <div>
+                  <volist name='tags' id='l_t'> <a class="mr10" href="http://www.leyix.com/tag/{$l_t.tag_id|get_tag=name}"><i class="icon-tag icon-white"></i>{$l_t.tag_id|get_tag=name}</a> </volist>
+                </div>
+              </div>
+            </div>
+            <span class="clear"></span>
+            <div class="mt10 mb10">
+              <div class=""> <a href="javascript:;" class="btn btn-mini btn-info" onClick="Le_Share_click(this,'{$le.id}','le');"><i class="icon-thumbs-up-alt icon-1x"></i>顶(<span>{$le.le}</span>)</a> <a href="javascript:;" class="btn btn-mini ml5" onClick="Le_Share_click(this,'{$le.id}','nu');"><i class=" icon-thumbs-down-alt icon-1x"></i>踩(<span>{$le.nu}</span>)</a> <a href="javascript:;" class="btn btn-mini btn-warning pull-right" onClick="Le_Share_fav(this,'{$le.id}')"><i class="icon-folder-open-alt  icon-1x"></i><span>收藏</span></a> <a href="javascript:;" class="btn btn-mini btn-success pull-right mr10" onClick="Le_Comment(this,'{$le.id}');" ><i class="icon-comments-alt icon-1x "></i>评论(<span>{$le.comment_count}</span>)</a> </div> 
+              <div class="clear"></div>
+            </div>
+          </li>
+          <!--单条笑话-->
+        </ul>
+      </div>
+      <!--上下条笑话-->
+      <div class="m10 widget row-fluid">
+      <div class="m10 pull-right mr10"> <a href="http://www.leyix.com/le/{$more['next']}" <eq name='more.next' value=''>onClick="return false"</eq>class="btn btn-warning  <eq name='more.next' value=''>disabled</eq>">下一条笑话 <i class="icon-arrow-right"></i></a> </div>
+        <div class="m10 ml10"><a href="http://www.leyix.com/le/{$more['up']}" <eq name='more.up' value=''>onClick="return false"</eq> class="btn  btn-warning <eq name='more.up' value=''>disabled</eq>"><i class="icon-arrow-left"></i>上一条笑话</a> </div>
+        
+        <div class="clear"></div>
+      </div>
+      <!--上下条笑话--> 
+      
+      <!--广告区域-->
+      <div class="widget"> <img src="http://www.leyix.com/static/home/images/20130806214350.png"> </div>
+      <!--广告区域--> 
+      <!--评论区-->
+      <div id="comment-" class="mt10">
+        <div class=" well">
+          <div class="enterMessage">
+            <form id="comment_form_{$le.id}">
+            <input type="text" id="comment-input-{$le.id}" name="comment" placeholder="请输入你的评论。。。。">
+            <input type="hidden" name="fid" id="fid_{$le.id}" value="0">
+            <input type="hidden" name="share_id" id="share_id_{$le.id}" value="{$le.id}">
+            <div class="sendBtn">
+              <input type="button" name="sendMessage" class="buttonS bLightBlue" onClick="Le_Add_Comment('{$le.id}');" value="提交">
+            </div>
+          </form>
+          </div>
+          <div id="general" style="display: block; " class="active">
+            <ul class="userList" id="content-ul-list-{$le.id}">
+              <volist name='list.list' id='vo'>
+                <li style="padding:0px;"> <a href="" title=""> <img src="__AVATAR__/{$vo.uid|get_user=avatar}" style="width:40px;" alt="{$vo.uid|get_user=nick}"> <span class="contactName"> <strong>{$vo.uid|get_user=nick}<span style="display:none;">举报</span></strong> <i>{$vo.comment}</i> </span> <span class="clear"></span> </a> </li>
+              </volist>
+            </ul>
+            <div class="clear"></div>
+          </div>
+        </div>
+      </div>
+      <div class="pagination">
+        <ul class="pages">
+         {$list.page}
+        </ul>
+      </div>
+      <!--评论区--> 
+    </div>
+  </div>
+</article>
+<include file='Public:footer' />
+</body>
+</html>

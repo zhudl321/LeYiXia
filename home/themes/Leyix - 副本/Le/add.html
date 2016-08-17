@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>乐一下投稿-冷笑话,内涵图,搞笑图片,笑话分享,笑话制作,图片在线处理-乐一下</title>
+<link href="__CSS__/styles.css" rel="stylesheet" type="text/css">
+<include file='Public:common_file' />
+</head>
+<body>
+<include file='Public:header' />
+<article>
+  <div class="container">
+    <div class="span8 row">
+      <div class="widget">
+        <ul class=" mt0 mb0 middleNavR">
+          <li><a href="#" class="tipN" original-title="Add an article"><img src="__PUBLIC__/home/images/icons/mainnav/photo.png" alt=""></a></li>
+          <li><a href="#" class="tipN" original-title="Upload files"><img src="__PUBLIC__/home/images/icons/mainnav/video.png" alt=""></a></li>
+          <li><a href="#" class="tipN" original-title="Add something"><img src="__PUBLIC__/home/images/icons/mainnav/text.png" alt=""></a></li>
+        </ul>
+        <div class="divider"></div>
+        <!--单条笑话-->
+        <div class="span8">
+        <form id="forminfo">
+          <div class="input-prepend"> <span class="add-on">标题</span>
+            <input class="span6" id="prependedInput" name="title" type="text" placeholder="请输入标题..">
+            <input type="hidden" name="img" id="img_input" value="0"/>
+            <input type="hidden" name="img_type" id="img_type_input"/>
+            <input type="hidden" name="type" value="share"/>
+            <input type="hidden" name="tag" id="tag_input"/>
+          </div>
+          <div class="span5" style=" width:340px; margin-left:0;">
+            <div class="input-prepend mt10">
+              <div id="tags_tagsinput" class="tagsinput" style="width:100%;"> 
+                <div id="tags_addTag">
+                  <input id="tags_tag" onBlur="Le_Input_Tag(this);" value="" placeholder="添加标签">
+                </div>
+                <div class="tags_clear"> </div>
+              </div>
+              <div class="ui-icon-tag tagsinput" style="max-width:332px;">
+              <volist name='hot_tag' id='h_t'>
+              <a href="javascript:;" onClick="Le_Append_Tag(this,'{$h_t.name}');"><span class="tag">{$h_t.name}</span></a>
+              </volist>
+              </div>
+              <div class="input-prepend mt15">
+                <textarea class="span5" name="content" style="max-width:332px; height:126px; max-height:126px;"></textarea>
+              </div>
+            </div>
+            <style type="text/css">
+          .img_up{ background:url(__PUBLIC__/home/images/backgrounds/fixedImg_bg.png) no-repeat; width:223px; height:271px;line-height:271px;}
+		  .img_show{margin:5px; width:213px;}
+		  .img_show_ok{ margin:0 auto; max-height:230px; }
+          </style>
+          </div>
+          <div class="span2">
+            <div class="img_up" align="center"> <a href="#" onClick="javascript:$('#img_type').fadeIn(200); return false;"><img class="img_show" src="__PUBLIC__/home/images/dropFiles.png"></a> </div>
+          </div>
+          <div class="clear"></div>
+          <div class="alert alert-error span6" style="margin-bottom:-20px; display:none;" id="post_error"></div>
+          <div class="clear"></div>
+          <div class="form-actions span6">
+            <button type="button" class="btn btn-primary" onClick="Le_Url_Post();">提交我的神作</button>
+            <button type="button" class="btn">算了</button>
+          </div>
+        </form>
+        </div>
+        <!--单条笑话-->
+        <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+      <!--广告区域-->
+      <div class="widget"> <img src="__PUBLIC__/home/images/20130806214350.png"> </div>
+      <!--广告区域--> 
+    </div>
+    <div class="span4 box-right">
+        <div class="widget well">
+        <blockquote>
+         <strong>发帖须知</strong>
+        </blockquote>
+        <p>1.请尊重帖子的原创性,如有水印请保留。</p>
+        <p>2.撰写有趣的或描述性的介绍而不是短语，如"哈哈"，"快来看"，或"支持"......</p>
+        <p>3.不得发布露点、暴力、毁谤、非法的内容，请自觉维护网站良好风气。</p>
+        <p>4.内容版权归乐一下网站所有。</p>
+        <p>5.乐一下的成长离不开你们，感谢大家.你们的支持，是我们最大的收获！！</p>
+        
+       </div>
+      <div class="widget">
+        <div class="span2 mt20"> <a class="btn btn-mini btn-info disabled">腾讯微博</a> <a class="btn btn-mini btn-danger disabled">新浪微博</a> <a class="btn mt5 btn-mini btn-warning disabled">Q Q 空间</a> <a class="btn mt5 btn-mini btn-inverse disabled">RSS订阅</a> </div>
+        <img src="__PUBLIC__/home/images/20130806175814.jpg" class="m10"> <span class="clear"></span> </div>
+      
+      <!--pin-->
+      <div id="r-box">
+        <div class="text-center widget" align="center"> <img src="__PUBLIC__/home/images/20130806182536.jpg"> </div>  
+        <!--pin--> 
+      </div>
+    </div>
+  </div>
+</article>
+<footer>
+  <div class="divider"><span></span></div>
+  <div class="text-center container">
+    <ul class="quickStats mt20">
+      <li><a href="">关于我们</a></li>
+      <li><a href="">免责声明</a></li>
+      <li><a href="">加入我们</a></li>
+      <li><a href="">在线反馈</a></li>
+      <li><a href="">手机客户端</a></li>
+      <li><a href="">招聘信息</a></li>
+      <li><a href="">广告服务</a></li>
+      <li>©leyix.com 桂ICP备11024271号-2</li>
+    </ul>
+    <div class=" clear"></div>
+    <div class="divider" style="margin-top:10px;"></div>
+    <p>hao123上网导航 360安全网址 搜狗网址导航 淘宝联盟橱窗推广 秘密</p>
+  </div>
+</footer>
+<div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-draggable std42-dialog  elfinder-dialog elfinder-dialog-error elfinder-dialog-active" id="img_type" style="width: 400px; height: auto; top:30%; left:50%; margin-left:-200px; z-index: 11; display:none;">
+  <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">图片选项</div>
+  <div class="ui-dialog-content ui-widget-content">
+    <ul class="mt0 ml5 middleNavA">
+      <li><a href="javascript:;" onClick="Le_Up_Img();javascript:$('#img_type').hide();" title="在线制作"><img src="__PUBLIC__/home/images/icons/mouse.png" alt=""><span>在线制作</span></a></li>
+      <li><a href="javascript:;" onClick="javascript:$('.searchLine').show();$('.middleNavA').hide();" title="图片地址"><img src="__PUBLIC__/home/images/icons/link.png" alt=""><span>图片地址</span></a></li>
+      <li><a href="#" title="本地上传"><span id="file_upload"></span><span>本地上传</span></a></li>
+    </ul>
+    <div class="alert alert-error" style="margin-bottom:-25px; display:none" id="url_error"></div>
+    <div class="" style="margin-bottom:-20px; text-align:center; display:none;" id="url_load"><img src="__PUBLIC__/home/images/elements/loaders/<php> echo rand(1,10); </php>.gif" alt="">
+      <div class="clear"></div>
+    </div>
+    <div class="searchLine" style="display:none;">
+      <input type="text" name="search" class="ac ui-autocomplete-input" placeholder="请输入图片地址" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" style="height:40px;">
+      <button type="submit" name="find" value="" style="padding-left: 5px;" onClick="Le_Add_UrlImg($(this).parent().find('input').val())"><i class="icon-search icon-2x" ></i></button>
+    </div>
+    <div id="up_view" style=" display:none;"></div>
+  </div>
+  <div class=" ui-helper-clearfix ui-dialog-buttonpane ui-widget-content">
+    <div class="ui-dialog-buttonset">
+      <div id="bar_view" class="progress progress-striped active span3" style="display:none;"> </div>
+      <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only"><span onClick="javascript:$('#img_type').fadeOut(200);"  class="ui-button-text">取消</span></button>
+    </div>
+  </div>
+</div>
+<link type="text/css" href="__CSS__/uploadify.css">
+<script type="text/javascript" src="__JS__/jquery.uploadify.min.js"></script> 
+<script type="text/javascript">
+$(function() {
+    $('#file_upload').uploadify({
+		'fileTypeDesc' : '文件类型',
+		'fileTypeExts' : '*.gif; *.jpg; *.png; *.jpeg',
+		'queueID'  : 'up_view',
+        'swf'      : '__CSS__/uploadify.swf',
+        'uploader' : "{:U('Sever/up_img')}",
+		'buttonImage' : '__PUBLIC__/home/images/icons/designbumb.png',		
+	    'width'         : '65',
+	    'height'        : '65',
+		'onUploadProgress'   :function(file, bytesUploaded,bytesTotal, totalBytesUploaded, totalBytesTotal){
+			  var bar=bytesUploaded/bytesTotal;
+			  var bars=bar*100+"%";
+			  $('#bar_view').show();
+			  $('#bar_view').html('<div id="bar" class="bar" style="width:'+bars+'"></div>');
+			  //$('#bar').css({width:bytesUploaded*bytesTotal});
+			},
+		'onUploadSuccess'    :function(file,data,response){
+			var json = jQuery.parseJSON(data);
+			$('#img_type').hide();
+			$('#img_input').val(json.data.img_id);
+			$('#img_type_input').val('1');
+			$('.img_up').html('<img class="img_show_ok" src="__IMG__/'+json.data.img_name+'">');
+			//alert(json.status);
+			}
+        // Put your options here
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<div id="alert_box" style="display:none;">
+<div class="alert_bg"></div>
+<div class="ui_box_wrap" style="width: 700px; height: 500px; left: 50%; top: 10%; margin-left: -360px; z-index: 999;">
+  <div class="ui_box" style="width: 700px; height: 500px; ">
+    <div class="login_body">
+      <div class="login_title"><span class="t">建议换一个吸引乐友的头像</span><span class="ti"></span><a class="close" title="关闭" onClick="Close_box();" href="javascript:;"></a></div>
+      <div id="altContent"></div>
+    </div>
+  </div>
+</div>
+</div>
+<script type="text/javascript" src="__JS__/swfobject.js"></script>
+<script type = "text/javascript">
+function uploadevent(data) {
+	   alert(data);
+	   location.reload();
+}
+var flashvars = {
+	"jsfunc": "uploadevent",
+	"imgUrl": "__AVATAR__/{$Think.session.user.id|get_user=avatar}",
+	"pid": "75642723",
+	"uploadSrc": true,
+	"showBrow": true,
+	"showCame": true,
+	"uploadUrl": "{:U('Sever/save_avatar')}"
+};
+var params = {
+	menu: "false",
+	scale: "noScale",
+	allowFullscreen: "true",
+	allowScriptAccess: "always",
+	wmode: "transparent",
+	bgcolor: "#FFFFFF"
+};
+var attributes = {
+	id: "FaustCplus"
+};
+swfobject.embedSWF("__JS__/FaustCplus.swf", "altContent", "700", "450", "9.0.0", "__JS__/expressInstall.swf", flashvars, params, attributes);</script>

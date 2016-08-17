@@ -1,0 +1,76 @@
+<!doctype html>
+<!-- saved from url=(0026)http://www.haha.mx/my/joke -->
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$Think.session.user.id|get_user=nick}的评论</title>
+<link type="text/css" rel="stylesheet" href="__CSS__/page-my.css">
+<include file='Public:common_file' />
+</head>
+<body>
+<!-- header --> 
+<include file='Public:header' /> 
+<!-- //header --> 
+<!-- container -->
+<div class="container"> 
+  <!-- content -->
+  <div id="content" class="content clearfix height-adjust"> 
+    <!-- content -->
+    <div class="main fl">
+      <ul class="ext-tab" id="ext-tab">
+        <!--<li> <a href="/my/comment/recive">我收到的评论</a></li>-->
+        <li class="current"> <a href="{:U('/my/comment')}">我发出的评论</a></li>
+      </ul>
+      <!-- joke list -->
+      <div class="list joke">
+        <volist name='data.list' id='l'> <a name="{$l.id}"></a> 
+          <!-- 单条笑话-->
+          <div class="block comment-item" id="comment-item-{$l.id}">
+            <div class="text word-wrap dashed-bb pb-10">{$l.comment}</div>
+            <eq name='l.fid' value='0'>
+            <p class="text word-wrap pt-10"> 评论笑话：<a href="{:U('/le/'.$l['share_id'].'')}">{$l.share_id|get_share=title}</a></p>
+            <else/>
+            <p class="text word-wrap pt-10"> 回复评论：<a href="{:U('/le/'.$l['share_id'].'')}">{$l.fid|get_comment=comment}</a></p>
+            </eq>
+            <ul class="clearfix mt-15">
+              <li class="info fl"> <a href="{:U('/user/'.$l['uid'].'')}" class="avatar24 inline-block" style="max-width:25px; max-height:25px;"> <img src="__AVATAR__/{$l.uid|get_user=avatar}"> </a> <a href="{:U('/user/'.$l['uid'].'')}">{$l.uid|get_user=nick}</a><span> {$l.add_time} 发布</span> </li>
+              <eq name='Think.session.user.id' value='$l.uid'><li class="fr"><a href="javascript:;" onClick="Le_Del_Comment('{$l.id}');" data="cd">删除</a></li></eq>
+            </ul>
+          </div>
+          <!-- //单条笑话 --> 
+        </volist>
+      </div>
+      <div class="pagination mt-15">{$data.page}</div>
+      
+      <!-- //joke list--> 
+    </div>
+    <!-- //content --> 
+    <!-- sidebar --> 
+    <!-- sidebar -->
+    <div class="sidebar fr">
+      <dl class="user-info clearfix">
+        <dt class="avatar99 fl"> <a href="javascript:;" title="修改头像" onClick="Le_Edit_Avatar();"><img src="__ROOT__/uploads/avatar/{$Think.session.user.id|get_user=avatar}"> </a> </dt>
+        <dd class="fl"> <a href="" class="nickname">{$Think.session.user.id|get_user=nick}</a>
+          <p><a href="http://www.haha.mx/my/score" class="icon-lv icon-{$Think.session.user.id|get_user_count=integral,true} inline-block"></a></p>
+          <p>乐分：{$Think.session.user.id|get_user_count=integral}</p>
+          <a href="http://my.maxthon.cn/profile.html" target="_blank">修改资料</a>|<a href="javascript:;" onClick="Le_Edit_Avatar();">修改头像</a> </dd>
+      </dl>
+      <ul class="menu">
+        <li class="menu-joke "> <a href="{:U('/my')}">我的哈哈</a> </li>
+        <li class="menu-comment menu-joke-current"><a href="{:U('/my/comment')}">我的评论</a> </li>
+        <li class="menu-fav"> <a href="{:U('/my/fav')}">我的收藏</a> </li>
+        <li class="menu-msg"> <a href="{:U('/my/message')}">我的消息</a> </li>
+      </ul>
+    </div>
+    <!-- //sidebar --> <!-- //sidebar --> 
+    
+  </div>
+  <!-- //content --> 
+</div>
+<!-- //container --> 
+
+<!-- footer--> 
+<include file='Public:footer' /> 
+<!-- footer-->
+</body>
+</html>

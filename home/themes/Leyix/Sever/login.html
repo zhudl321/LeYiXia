@@ -1,0 +1,57 @@
+<div id="alert_box" style="display:none;">
+<div class="alert_bg"></div>
+<div class="ui_box_wrap" style="width: 720px; height: 260px; left: 50%; top: 40%; margin-left: -360px; margin-top: -130px; z-index: 999;">
+  <div class="ui_box" style="width: 720px; height: 260px; ">
+    <div class="login_body">
+      <div class="login_title"><span class="t">登录乐一下</span><span class="ti"></span><a class="close" title="关闭" onClick="Close_box();" href="javascript:;"></a></div>
+      <div class="login_form">
+        <form id="login_info">
+          <p class="l_t">使用已有帐号登录</p>
+          <p>
+            <label for="userName" class="box_label" style="display: block; ">用户名/邮箱</label>
+            <input name="username" id="username" type="text">
+          </p>
+          <p>
+            <label for="password" class="box_label" style="">密码</label>
+            <input name="password" id="password" type="password" autocomplete="off">
+          </p>
+          <p class="btn_w">
+            <button id="login_box_login" class="common_btn fl" type="button" onClick="login();" autocomplete="off">登录<span class="r"></span></button>
+            <span><a class="get_pwd_link" href="{:U('/getpassword')}">忘记密码？</a></span></p>
+        </form>
+      </div>
+      <div class="login_side">
+        <p class="r_t">使用常用社区帐号登录</p>
+        <p><a class="sina" href="{:U('/login/sina')}" target="_blank">新浪微博帐号登录</a><a class="qzone" href="{:U('/login/qq')}" target="_blank">QQ帐号登录</a><a class="taobao" href="{:U('/login/baidu')}" target="_blank">百度帐号登录</a><a class="more" href="javascript:;" onClick="more_denlu();">选择更多登录方式</a></p>
+        <div class="clear"></div>
+        <ul class="more_denlu">								
+		<li><a class="taobao" href="{:U('/login/t163')}" target="_blank"><img alt="网易" src="__PUBLIC__/home/images/icons/t_163.png"></a></li>	
+        <li><a class="taobao" href="{:U('/login/renren')}" target="_blank"><img alt="人人网账号登陆" src="__PUBLIC__/home/images/icons/renren.png"></a></li>		
+        <li><a class="taobao" href="{:U('/login/x360')}" target="_blank"><img alt="360账号登陆" src="__PUBLIC__/home/images/icons/360.png"></a></li>			
+        <li><a class="taobao" href="{:U('/login/douban')}" target="_blank"><img alt="豆瓣账号登陆" src="__PUBLIC__/home/images/icons/db.png"></a></li>
+        <li><a class="taobao" href="{:U('/login/kaixin')}" target="_blank"><img alt="开心网账号登陆" src="__PUBLIC__/home/images/icons/kx.png"></a></li>
+		</ul>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<style type="text/css">
+.more_denlu{ list-style:none; margin-left:30px; display:none;}
+.more_denlu li{ float:left; margin-right:10px;}
+</style>
+<script type="text/javascript">
+function login(){
+	$.post("{:U('Public/cklogin')}",$("#login_info").serialize(),function(data){
+		if(data.status==1){
+			window.location=location.href;
+		}else{
+		layer.tips(data.info,$('input[name='+data.data+']'),3);
+		}
+		});
+}
+function more_denlu(){
+	$('.more_denlu').toggle();
+	return false;
+}
+</script>

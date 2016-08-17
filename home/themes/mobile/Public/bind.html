@@ -1,0 +1,31 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<title>乐一下 — 账号绑定</title>
+<link href="__CSS__/base.css" rel="stylesheet" type="text/css">
+<link href="__CSS__/login.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<div class="login_container">
+	<a class="login_logo" href=""></a>
+	   	<div class="login_bar"></div>
+	   	<h2 class="oauth_digu_t">绑定乐一下账号-随心所欲登陆</h2>
+	   <div class="login_left">
+	        <div class="oauth_digu_l">
+	   			<img src="{$info.avatar}" alt="{$info.nick}" width="195" height="195" style="box-shadow:0px 3px 6px;">
+	        </div>
+	   	</div>
+	   
+	   	<div class="login_right">
+	       <div class="oauth_digu_r">
+           		<form action="{:U('Public/bind_ok')}" method="post">
+                <input type="hidden" name="bind_id" value="{$info.md5id}">
+	            <p><label for="userName">用户名</label><input type="text" name="username" id="username" value=""><span class="error_tips"></span></p>
+	            <p><label for="password">密码</label><input type="password" name="password" id="password" value=""><span class="error_tips"></span></p>            
+	           	<p><label>&nbsp;</label><span class="red_btn"><em></em><button type="submit" id="oauth_btn">确定</button></span><span id="login_error"></span></p>
+	        </form>
+	 	</div>
+	</div>
+</div>
+<div style="height:80px; width:100%; clear:both;"></div>
+</body></html>

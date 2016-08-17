@@ -1,0 +1,19 @@
+<link href="http://www.leyix.com/static/home/css/box.css" rel="stylesheet" >
+<link href="http://www.leyix.com/static/home/css/layer.css" rel="stylesheet">
+<script type="text/javascript" src="http://www.leyix.com/static/home/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://www.leyix.com/static/home/js/jquery.lazyload.min.js"></script>
+<script type="text/javascript" src="http://www.leyix.com/static/home/js/le.js"></script>
+<script type='text/javascript' src='http://www.leyix.com/static/home/js/layer.min.js'></script>
+<script type='text/javascript' src='http://www.leyix.com/static/home/js/jquery.tipMessage.js'></script>
+<script type="text/javascript" language="javascript">var APP="http://www.leyix.com";var USERID="{$Think.session.USERID}";</script><script type="text/javascript" charset="utf-8">
+var showeffect = ""; 
+if($.browser.msie){
+	showeffect = "show"; 
+	}else{
+		showeffect = "fadeIn"; 
+}
+$(function(){$("img.le_img").lazyload(
+	{effect:showeffect}
+);
+});
+</script>

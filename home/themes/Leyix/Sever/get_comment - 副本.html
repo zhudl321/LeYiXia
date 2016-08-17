@@ -1,0 +1,41 @@
+<div class="comment-container" id="comment-container-{$id}">
+  <empty name='Think.session.USERID'>
+    <div class="bar mt-15" style="padding: 0px 10px; ">您尚未登录，暂时无法发表评论。<a href="javascript:;" onClick="Le_Login();" class="highlight">立即登录</a></div>
+    <else/>
+    <div class="bar mt-15 align-center" id="login-box-{$id}">
+      <div class="comment-input-box">
+       <form id="comment_form_{$id}">
+       <div id='comment_form_nick_{$id}'></div>
+        <textarea name="comment" cols="" rows="" range="0" class="comment-input" id="comment-input-{$id}"></textarea>
+        <input type="hidden" name="fid" id="fid_{$id}" value="0">
+        <input type="hidden" name="share_id" id="share_id_{$id}" value="{$id}">  
+       </form>      
+      </div>
+      <ul class="clearfix">
+        <li class="fl"><a href="javascript:;" id="add-face-{$id}" class="inline-block add-face">表情</a><span class="word-check">您还可以输入<strong class="h1" id="lwords-{$id}">400</strong>个字符</span></li>
+        <li class="fr"><span class="shortcut">Ctrl+Enter快速提交</span><a href="javascript:;" juid="9858552" class="btn-primary send inline-block" id="send-{$id}" onClick="Le_Add_Comment('{$id}');">发表评论</a></li>
+      </ul>
+    </div>
+  </empty>
+  <div class="comment-msg" id="msg-{$id}"></div>
+  <ul class="tab clearfix mt-15" id="tab-{$id}">
+    <li order="time" class="current"><a href="javascript:;">时间排序</a></li>
+    <li order="light"><a href="javascript:;">最亮排序</a></li>
+  </ul>
+  <div class="comments" id="comments-{$id}">
+  <volist name='list' id='vo' empty='呼。。。还木有乐友评论哦。'>
+    <div class="item clearfix" id="comment-item-{$vo.id}" onMouseMove="javascript:$('#comment_show_son_{$vo.id}').show();" onMouseOut="javascript:$('#comment_show_son_{$vo.id}').hide();">
+    <a class="fl avatar32" name="n1" href="{:U('/user/'.$vo['uid'].'')}"><img src="__AVATAR__/{$vo.uid|get_user=avatar}" width="32" height="32"></a>
+      <dl>
+        <dt class="clearfix"><a class="highlight fl" href="{:U('/user/'.$vo['uid'].'')}">{$vo.uid|get_user=nick}</a><span class="fl pl-10">{$vo.add_time|date='Y-m-d H:i',###}发布</span></dt>
+       
+        <dd class="word-wrap"><neq name='vo.fid' value='0'>{$vo.fid|get_comment_replay}</neq>{$vo.comment}</dd>
+        <dd class="align-right"><span><a href="javascript:;" onClick="Le_Comment_Back('{$vo.id}');" id="back_{$vo.id}" class="btn-icon light inline-block">{$vo.back}</a></span><span class="fr" style="margin-left:5px;"><a href="javascript:;" onClick="Le_Recomment('{$id}','{$vo.id}','{$vo.uid|get_user=nick}:')" class="btn-replay">回复</a> | <a href="javascript:;" class="btn-report" onClick="Le_Comment_Report('{$vo.id}','comment')">举报</a><a href="javascript:;" class="btn-report" onClick="Le_Commen_hide('{$id}');"id='comment_show_son_{$vo.id}' style="display:none;">↑收起评论</a></span></dd>
+        
+      </dl>
+    </div>
+    
+   </volist> 
+  </div>
+  <p class="align-right mt-10" id="all-{$id}"><gt name='count' value='0'>后面还有{$count}条评论<a href="{:U('/le/'.$id.'')}">点击查看详细</a>|</gt><a class="btn-hide" href="javascript:;" onClick="Le_Commen_hide('{$id}');" data="ch">收起评论</a></p>
+</div>

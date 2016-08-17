@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta charset="utf-8">
+<title>{$Think.session.user.id|get_user=nick}的个人中心</title>
+<link href="__CSS__/styles.css" rel="stylesheet" type="text/css">
+<include file='Public:common_file' /> 
+</head>
+<body>
+<!-- header --> 
+<include file='Public:header' /> 
+<!-- //header --> 
+<!-- container -->
+<div class="container"> 
+  <!-- content -->
+  <div id="content" class="content clearfix height-adjust"> 
+    <!-- content -->
+    <div class="main fl">
+      <h2>我的哈哈（{$Think.session.user.id|get_user_count=share}）</h2>
+      <!-- joke list -->
+      
+      <div class="list joke">
+      <volist name='data.list' id='l'>
+        <a name="{$l.id}"></a> 
+        <!-- 单条笑话-->
+        <div class="block joke-item" id="le-{$l.id}" juid="{$l.uid}" onMouseMove="$('#toolkit_{$l.id}').show();" onMouseOut="$('#toolkit_{$l.id}').hide()">
+          <p class="text word-wrap"><a href="{:U('/le/'.$l['id'].'')}" class="le_title">{$l.title}</a></p>
+          <a href="{:U('/le/'.$l['id'].'')}" data="cp" id="thumbnail-{$l.id}" class="thumbnail" path="{$l.add_time|date='Y/m/d',###}" > 
+          <img class="le_img" src="__PUBLIC__/home/images/xubox_loading0.gif" data-original="__IMG__/{$l.img_id|get_img=filename}"> 
+          </a> 
+          <div class="clear"></div>
+          <p>{$l.content}</p>
+          <div class="clear"></div>
+          <div class="clearfix mt-15">
+            <div class="label fl"> 
+              <volist name='l.tag' id='l_t'>
+              <span class="tags"><a href="{:U('/tag/'.get_tag($l_t['tag_id'],name).'')}">{$l_t.tag_id|get_tag=name}</a></span>
+              </volist>
+            </div>           
+            <!-- Baidu Button BEGIN -->
+            <div id="bdshare" style="float:right" class="bdshare_t bds_tools get-codes-bdshare" data="{
+                'bdDes':'您的自定义分享摘要',
+                'text':'您的自定义分享内容',
+                'title':'您的自定义pop窗口标题',
+                'pic':'您的自定义分享出去的图片',
+                'bdComment':'您的自定义分享评论',
+                'url':'您的自定义分享url',
+                'wbuid':'您的自定义微博 ID',
+            }">
+                <a class="bds_qzone"></a>
+                <a class="bds_tsina"></a>
+                <a class="bds_tqq"></a>
+                <a class="bds_renren"></a>
+                <span class="bds_more"></span>
+            </div>          
+           <!-- Baidu Button END -->
+            <div class="toolkit fr" id="toolkit_{$l.id}" style="display: none; "> 
+                 <a href="javascript:;" data="r">举报</a>|
+                 <a href="{:U('/le/'.$l['id'].'')}" target="_blank">查看全文</a>|
+            </div>
+          </div>
+          <div class="clearfix mt-15">
+            <div class="info fl"> 
+            <a href="{:U('/user/'.$l['uid'].'')}" class="avatar24"> 
+            <img src="__AVATAR__/{$l.uid|get_user=avatar}"> 
+            </a>
+            <div><a href="{:U('/user/'.$l['uid'].'')}">{$l.uid|get_user=nick}</a> <span class="joke-time"> {$l.add_time|date='Y-m-d H:i:s',###} 发布 </span></div>
+            </div>
+            <div class="fr">
+            <a href="javascript:;" onClick="Le_Comment('{$l.id}');" title="评论" class="fr btn-icon comment" data="c">评论：{$l.comment_count}</a> 
+            <a href="javascript:;" title="收藏" onClick="Le_Share_fav('{$l.id}')" class="fr btn-icon fav">收藏<span>{$l.fav}</span></a> 
+            <a href="javascript:;" title="怒了" onClick="Le_Share_click('{$l.id}','nu');" class="fr btn-icon bad" id="nu-{$l.id}">怒了<span id="nu_count_{$l.id}">{$l.nu}</span></a> 
+            <a href="javascript:;" title="乐了" onClick="Le_Share_click('{$l.id}','le');" class="fr btn-icon good" id="le-{$l.id}">乐了<span id="le_count_{$l.id}">{$l.le}</span></a> 
+            </div>
+          </div>
+          <!--评论区-->
+          <div id="conmennt_show_{$l.id}" style="display:none;" status='0'><div class="pindo_loading" id="pindo_loading_{$l.id}"  style="display: none; "></div></div>
+          <!--评论区-->
+        </div>
+        <!-- //单条笑话 --> 
+      </volist>
+      </div>
+      <div class="pagination mt-15">{$data.page}</div>
+      
+      <!-- //joke list--> 
+    </div>
+    <!-- //content --> 
+    
+    <!-- sidebar --> 
+    <!-- sidebar -->
+    <div class="sidebar fr">
+      <dl class="user-info clearfix">
+        <dt class="avatar99 fl"> <a href="javascript:;" title="修改头像" onClick="Le_Edit_Avatar();"><img src="__ROOT__/uploads/avatar/{$Think.session.user.id|get_user=avatar}"> </a> </dt>
+        <dd class="fl"> <a href="" class="nickname">{$Think.session.user.id|get_user=nick}</a>
+          <p><a href="http://www.haha.mx/my/score" class="icon-lv icon-{$Think.session.user.id|get_user_count=integral,true} inline-block"></a></p>
+          <p>乐分：{$Think.session.user.id|get_user_count=integral}</p>
+          <a href="http://my.maxthon.cn/profile.html" target="_blank">修改资料</a>|<a href="javascript:;" onClick="Le_Edit_Avatar();">修改头像</a> </dd>
+      </dl>
+      <ul class="menu">
+        <li class="menu-joke menu-joke-current"> <a href="{:U('/my')}">我的哈哈</a> </li>
+        <li class="menu-comment"><a href="{:U('/my/comment')}">我的评论</a> </li>
+        <li class="menu-fav"> <a href="{:U('/my/fav')}">我的收藏</a> </li>
+        <li class="menu-msg"> <a href="{:U('/my/message')}">我的消息</a> </li>
+      </ul>
+    </div>
+    <!-- //sidebar --> <!-- //sidebar --> 
+    
+  </div>
+  <!-- //content --> 
+</div>
+<!-- //container --> 
+
+<!-- footer-->
+<include file='Public:footer' /> 
+<!-- footer-->
+</body>
+</html>

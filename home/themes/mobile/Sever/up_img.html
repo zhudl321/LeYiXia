@@ -1,0 +1,41 @@
+<div id="alert_box" style="display:none;">
+<div class="alert_bg"></div>
+<div class="ui_box_wrap"  style="width:960px; height:650px; left:50%; margin-left:-480px; top:0px;  z-index: 999;">
+  <div class="ui_box" style="width:960px; height:650px; ">
+    <div class="login_body">
+      <div class="login_title"><span class="t">乐图制作-快来展示你的天才魅力吧！</span><span class="ti"></span><a class="close" title="关闭" onClick="Close_box();" href="javascript:;"></a></div>
+      <div id="MeiTu" style="width:100%; height:550px;">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src="__JS__/xiuxiu.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var data="{$data}";
+	xiuxiu.embedSWF("MeiTu",3,"100%","100%");
+       /*第1个参数是加载编辑器div容器，第2个参数是编辑器类型，第3个参数是div容器宽，第4个参数是div容器高*/
+	xiuxiu.setUploadType (2);
+	
+	xiuxiu.setUploadURL("http://{$Think.server.SERVER_NAME}{:U('Sever/up_img')}");//修改为您自己的上传接收图片程序
+	xiuxiu.onInit = function ()
+	{
+		if(data!=''){
+		xiuxiu.loadPhoto("http://{$Think.server.SERVER_NAME}{$data}");
+		}
+	}	
+	xiuxiu.onUploadResponse = function (data)
+	{
+		var json = jQuery.parseJSON(data);
+		$('.img_up').html('<img class="img_show_ok" src="__IMG__/'+json.data.img_name+'">');
+		Close_box();
+		//Le_Alert_Box('up_data',data);
+		//$('#MeiTu').html(data);
+		//alert("上传响应" + json.status);
+		//layer.tips(data,$('.login_title'),2,100,1);
+	}
+    xiuxiu.onDebug = function (datas)
+    {
+	alert("错误响应" + datas);
+    }
+</script>

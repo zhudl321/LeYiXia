@@ -1,0 +1,71 @@
+<div id="alert_box" style="display:none;">
+  <div class="alert_bg"></div>
+  <div class="huotu_dialog" style="width: 638px; height: auto; left: 50%; top: 50%; margin-left: -318.5px; margin-top: -165px;">
+    <div class="huotu_dialog_wrap" style="width: 638px; height: auto;">
+      <div class="huotu_dialog_title">乐一下，分享生活中的乐趣</div>
+      <div class="huotu_dialog_content">
+        <ul class="dialog_add nav" id='dialog_add_btn' style="display: block;">
+          <li><a class="upload_pin" onclick="Le_Up_Img();">
+            <p>图片制作</p>
+            </a></li>
+          <li><a class="add_pin" onclick="javascript:$('#url_img').show();$('#dialog_add_btn').remove();">
+            <p>分享网上图片</p>
+            </a></li>
+          <li class="last"><a class="create_board" onclick="javascript:$('#add_board').show();$('#dialog_add_btn').remove();">
+            <p>纯文字神作</p>
+            </a></li>
+        </ul>
+        <div id="url_img" style="display:none; padding-bottom:10px;">
+          <div style="padding:15px 35px 0">
+            <div class="dialog_uptab"><a class="upCommon select" href="javascript:;">分享普通图片</a></div>
+            <div class="URL_form">
+              <div class="form" id="form_url_img" style="display: block; ">
+                <p class="link_tips">将图片网址粘贴到下面框中即可。</p>
+                <div class="url_input_wrap">
+                  <input id="linkInput" type="text" placeholder="输入图片地址">
+                  <a type="button" id="add_url_img" onclick="Le_Add_UrlImg($(this).parent().find('input').val())">检索图片</a></div>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+   
+        <div id="add_board" style="height:300px; display:none;">
+          <div class="dialog_content add_board_dialog">
+          <form id="forminfo">
+            <ul>
+              <li>
+                <label class="Left">标题</label>
+                <div class="Right">
+                  <input id="board_name" type="title" name="title">
+                </div>
+              </li>
+              <li style="border:none">
+                <label class="Left">内容</label>
+                <div class="Right">
+                  <textarea id="board_content_i" name="content"></textarea>
+                </div>
+              </li>
+              <li>
+                <label class="Left">分类标签</label>
+                <div class="Right" style="position:relative;z-index:9999">
+                  <input id="tag_content_i" type="text" name="tag" placeholder="请选择此笑话的分类标签" >
+                  <div class="choose_tag" style="display:none;width:410px">
+                    <p class="tag_content"></p>
+                    <p style="text-align:center"><a href="javascript:;" class="confirm close"></a><span class="error" style="color:red;line-height:25px;"></span></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </form>
+          </div>
+          <div class="huotu_dialog_bottom" style="_position:static">
+            <div class="fr" style="padding-right:45px;"><span class="error_tips" style="margin-right:10px;float:left;line-height:30px"></span><a href="#" class="cancel grayness_m_btn" style="z-index:0" onclick="Close_box();"><em class="r"></em>取消</a><a href="#" class="editpage_submit common_m_btn" id="submitBoardBtn" style="z-index:0" onclick="Le_Url_Post();">创建笑话<em class="r"></em></a></div>
+          </div>
+        </div>
+        <div class="pindo_loading"  style="display: none; "></div>
+      </div>
+      <div class="huotu_dialog_close" title="关闭" onClick="Close_box();"></div>
+    </div>
+  </div>
+</div>

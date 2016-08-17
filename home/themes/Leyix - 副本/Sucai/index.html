@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>{$title}乐一下-笑话,最新冷笑话，搞笑图片，搞笑图片制作，脑残笑话，爆笑图片</title>
+<include file='Public:common_file' />
+<script type="text/javascript" src="__JS__/jquery.masonry.js"></script>
+<script type = "text/javascript">
+$(document).ready(function() {
+    $('.ImgLink img').load(function() {
+		$('.masonry').masonry({
+			itemSelector: '.layoutBox',
+			columnWidth: 236,
+			gutterWidth:13,
+		});
+	});
+	$('.masonry').masonry({
+		itemSelector: '.layoutBox',
+		columnWidth: 236,
+		gutterWidth:13,
+	});
+});
+
+</script>
+</head>
+<body>
+<!-- header --> 
+<include file='Public:header' /> 
+<!-- //header --> 
+
+<!-- container -->
+<div class="container"> 
+  <!-- content -->
+  <div id="content" class="content clearfix" style="width:984px;">
+  <div class="waterfall_wrap  site_home">
+  <div class="home_top_v2">
+    <div class="dynamic_tab_wrap">
+      <div class="view_type">
+      <a class="current" onClick="Le_Sucai_up();" href="javascript:;">上传素材</a>
+      </div>
+      <p class="dynamic_tab"> <a class="current" href="">最热素材<span id="hasNewConcernDynamic" class="dynamic_new_ico" style="display:none"></span></a> <a href="">最新素材<span id="hasNewFriendDynamic" class="dynamic_new_ico" style="display:none"></span></a></p> 
+         
+    </div>
+  </div>
+</div>
+    <div id="container_content" class="waterfall_wrap masonry">
+    <volist name='data.list' id='vo'>
+      <div class="pin layoutBox masonry-brick">        
+        <div class="watefall_pin PinImage" style="width:236px; background-color:#a67879;" onMouseMove="javascript:$('#but_{$vo.id}').show();" onMouseOut="javascript:$('#but_{$vo.id}').hide();">
+        <div class="actions actions_b" style="display:none;" id="but_{$vo.id}">
+          <div class="left" ><a href="javascript:;" onclick="Le_DIY('__SUCAI__/{$vo.img_id|get_img=filename}');" class="repin" title="DIY">DIY</a> </div>
+        </div> 
+        <a href="javascript:;" class="ImgLink" target="_blank"> 
+        <img src="__SUCAI__/{$vo.img_id|get_img=filename}" alt="{$vo.title}" value="" /> 
+       <span class="sub_pic_tips" title="" style="cursor:pointer"><i></i></span> 
+       </a> </div>
+        <div class="clearfix convo_info">
+          <p class="description">{$vo.title}</p>
+          <p class="description">{$vo.content}</p>
+          <p class="stats colorless"><span class="RepinsCount">上传于：{$vo.add_time|date='Y-m-d H:i:s',###}</span></p>
+        </div>
+        <div class="convo convo_a clearfix"> <a class="a_block" style="line-height:30px" href="{:U('/user/'.$vo['uid'].'')}"  target="_blank"> <img title="{$vo.uid|get_user=nick}" class="ImgLink" src="__AVATAR__/{$vo.uid|get_user=avatar}" alt="{$vo.uid|get_user=nick}" /> {$vo.uid|get_user=nick}</a></div>
+      </div>
+      </volist>
+      
+    </div>
+  </div>
+  <!-- //content --> 
+</div>
+<!-- //container --> 
+<!-- footer--> 
+<include file='Public:footer' /> 
+<!-- //footer-->
+</body>
+</html>

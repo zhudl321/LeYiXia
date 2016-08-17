@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<title>{$title}冷笑话,内涵图,搞笑图片,笑话分享-乐一下</title>
+<meta name="keywords" content="搞笑图片制作,搞笑图片动态,动态搞笑图,冷笑话,内涵图,最搞笑的网站,笑话分享,乐一下,乐一下搞笑图片,乐一下冷笑话,笑爆" />
+<meta name="description" content="乐一下搞笑网，最搞笑图片，gif搞笑图片，最搞笑图片动态，最有内涵分享，最长见识的内容，最容易笑的笑话，乐一下笑话分享，搞笑图片制作，搞笑图片分享。" />
+<link href="__CSS__/styles.css" rel="stylesheet" type="text/css">
+<include file='Public:common_file' />
+</head>
+<body>
+<include file='Public:header' />
+<article>
+  <div class="container">
+    <div class="span8 row">
+      <div class="widget row-fluid">
+        <div class="whead">
+        <ul id="top_tag" class="tabs nav-tag" style="z-index:99; overflow:hidden;">
+          <volist name='hot_tag' id='t_n' offset="0" length='10'>
+            <li><a href="{:U('/tag/'.$t_n['name'].'')}">{$t_n.name}</a></li>
+         </volist>
+          </ul>
+          <div class="clear"></div>
+        </div>
+        <ul class="updates mt0">
+          <volist name='data.list' id='le'> 
+            <!--单条笑话-->
+            <li class="item">
+              <div class="wNews"> <a href="{:U('/user/'.$le['uid'].'')}" title="" class="headline"><img style="width:38px;" class="le_img" src="__PUBLIC__/home/images/xubox_loading0.gif" data-original="__AVATAR__/{$le.uid|get_user=avatar}" alt="{$le.uid|get_user=nick}"></a>
+                <div class="announce"> <a href="{:U('/user/'.$le['uid'].'')}" title="">{$le.uid|get_user=nick}</a> <span>{$le.add_time|date='m-d H:i',###} 发布</span></div>
+                <div class="span12 mt10">
+                  <h4 class="pt0"><i class="icon-quote-left"></i><a href="{:U('/le/'.$le['id'].'')}">{$le.title}</a></h4>
+                  <neq name="le.content" value=''>
+                    <p class="initialism" style="font-size:13px;">{$le.content|str=0,100}<i class="icon-quote-right"></i></p>
+                  </neq>
+                  <gt name='le.img_id' value='0'>
+                    <p class="mt10"><a href="{:U('/le/'.$le['id'].'')}"><img class="img-polaroid le_img" src="__PUBLIC__/home/images/xubox_loading0.gif" data-original="__IMG__/{$le.img_id|get_img=filename}" alt="{$le.title}"></a></p>
+                  </gt>
+                  <div class="mt10">
+                    <volist name='le.tag' id='l_t'> <a class="mr10" href="{:U('/tag/'.get_tag($l_t['tag_id'],name).'')}"><i class="icon-tag icon-white"></i>{$l_t.tag_id|get_tag=name}</a> </volist>
+                  </div>
+                </div>
+              </div>
+              <div class="clear"></div>
+              <div class="mt10">
+                <div class="span9"> <a href="javascript:;" class="btn btn-mini btn-info" onClick="Le_Share_click(this,'{$le.id}','le');"><i class="icon-thumbs-up-alt"></i>顶(<span>{$le.le}</span>)</a> <a href="javascript:;" class="btn btn-mini ml5" onClick="Le_Share_click(this,'{$le.id}','nu');"><i class=" icon-thumbs-down-alt icon-1x"></i>踩(<span>{$le.nu}</span>)</a> <a href="javascript:;" class="btn btn-mini btn-warning pull-right" onClick="Le_Share_fav(this,'{$le.id}')"><i class="icon-folder-open-alt  icon-1x"></i><span>收藏</span></a> <a href="javascript:;" class="btn btn-mini btn-success  pull-right mr10" onClick="Le_Comment(this,'{$le.id}');" ><i class="icon-comments-alt icon-1x "></i>评论 (<span>{$le.comment_count}</span>)</a> </div>
+                <div class="alignCenter span3" style="max-height:25px; margin-left:10px;"> 
+                  <!-- Baidu Button BEGIN -->
+<div id="bdshare" class="bdshare_b" style="line-height:12px;" data="{
+'text':'#乐一下搞笑#:《{$le.title}》',
+<gt name='le.img_id' value='0'>'pic':'http://{$Think.server.server_name}__IMG__/{$le.img_id|get_img=filename}',</gt>
+'url':'http://{$Think.server.server_name}{:U('/le/'.$le['id'].'')}',
+'title':'乐一下搞笑分享',
+'bdDes':'{$le.content|str=0,100}',
+'bdComment':'乐一下搞笑,冷笑话,内涵图,搞笑图片,笑话分享'
+">
+<img src="__PUBLIC__/home/images/type-button-1.jpg" />
+</div>
+<!-- Baidu Button END -->
+                </div>
+                <div class="clear"></div>
+              </div>
+              
+              <!--功能区评论区-->
+              <div id="comment-{$le.id}" style="display:none;" status='0'>
+              
+              </div>
+              <!--功能区评论区--> 
+            </li>
+            <div class="item_food"></div>
+            <!--单条笑话--> 
+          </volist>
+        </ul>
+        <div class="pagination">
+          <ul class="pages">
+            {$data.page}
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="span4 box-right">
+    <div id="r-box" data="">
+      <div class="widget box-right-login">
+        <ul class="middleNavS">
+          <li><a href="javascript:;" onClick="Le_Add();" class="tipN" original-title="Add an article"><img src="__PUBLIC__/home/images/add.png" alt=""></a></li>
+        </ul>
+      </div>
+      <div class="widget">
+        <div class="span2 mt20"> <a class="btn btn-mini btn-info disabled">腾讯微博</a> <a class="btn btn-mini btn-danger disabled">新浪微博</a> <a class="btn mt5 btn-mini btn-warning disabled">Q Q 空间</a> <a class="btn mt5 btn-mini btn-inverse disabled">RSS订阅</a> </div>
+        <img src="__PUBLIC__/home/images/20130806175814.jpg" class="m10"> <span class="clear"></span> </div>
+      <!--<div class="text-center widget" align="center"><img src="__PUBLIC__/home/images/20130806172922.jpg" style="height:249px;"> </div>
+      <div class="text-center widget" align="center"><img src="__PUBLIC__/home/images/20130806172940.jpg" style="height:249px;"> </div>-->
+      
+      <!--pin-->
+      
+        <div class="text-center widget" align="center">
+        <script type="text/javascript">
+     document.write('<a style="display:none!important" id="tanx-a-mm_36039004_4154872_13502709"></a>');
+     tanx_s = document.createElement("script");
+     tanx_s.type = "text/javascript";
+     tanx_s.charset = "gbk";
+     tanx_s.id = "tanx-s-mm_36039004_4154872_13502709";
+     tanx_s.async = true;
+     tanx_s.src = "http://p.tanx.com/ex?i=mm_36039004_4154872_13502709";
+     tanx_h = document.getElementsByTagName("head")[0];
+     if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
+	</script>
+        </div>
+        <div class="widget">
+          <div class="whead">
+            <h6 style="float:left; margin:10px;"><i class="icon-tags"></i>热门标签</h6>
+            <a class="btn btn-mini btn-link pull-right mt10 mr5"><i class="icon-refresh"></i>换一换</a>
+            <div class="clear"></div>
+          </div>
+          <div class="ui-icon-tag tagsinput">
+            <volist name='hot_tag' id='l_h_t'> <a href="{:U('/tag/'.$l_h_t['name'].'')}"><span class="tag">{$l_h_t.name}</span></a> </volist>
+          </div>
+        </div>
+        
+        <!--pin--> 
+      </div>
+    </div>
+  </div>
+</article>
+<include file='Public:footer' />
+</body>
+</html>

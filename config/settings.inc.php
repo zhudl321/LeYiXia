@@ -1,0 +1,52 @@
+<?php
+return array (
+  'WEB_PUBLIC_PATH' => 'static',//网站公共目录
+  'DIR_UPLOAD_PATH' => 'uploads',
+  'DIR_RESIZE_PATH' => 'resize',
+  'DIR_MINI_PATH' => 'mini',
+  'DIR_THUMB_PATH' => 'thumb',
+  'DIR_ATTCH_PATH' => 'attach',
+  'PIC_MINI_WIDTH' => '75',
+  'PIC_MINI_HEIGHT' => '75',
+  'PIC_THUMB_WIDTH' => '140',
+  'PIC_THUMB_HEIGHT' => '98',
+  'PIC_RESIZE_WIDTH' => '650',
+  'PIC_RESIZE_HEIGHT' => '650',
+  'LIST_BOARD_NUMBER' => '20',
+  'LIST_GRID_NUMBER' => '21',
+  'LIST_VIEW_NUMBER' => '10',
+  'LIST_PICTURE_NUMBER' => '5',
+  'PAGE_ROLLPAGE' => 5,
+  'PAGE_LISTROWS' => 18,
+  'SITE_TITLE' => '阳朔游记',
+  'SITE_DP_AUTHOR' => 'NickDraw,零度温柔,webmaster@206c.net',
+  'SITE_KEYWORDS' => '零度空间,NickDraw,WEB UI,UED,UE,用户体验,PHP开发,PHP,JS,jquery,javascript,XHTML,CSS,网页设计',
+  'SITE_DESCRIPTION' => '零度空间，关于WEB UI设计、用户体验、PHP开发、前端应用开发的站点。',
+  'SITE_FOOTER' => '© 2011 - 2012 NDlog.com',
+  'DEFAULT_DATE_FORMAT' => 'Y-m-d',
+  'DEFAULT_THEME' => 'Leyix',
+  'THEME_LIST' => 'Leyix',
+  'QQ_APPKEY' => '',
+  'QQ_RETURN_DOMAIN' => '',
+  'QQ_ZONE_ID' => '',
+  'QQ_ZONE_KEY' => '',
+  'SINA_APPKEY' => 'SINA_KEY',
+  'SINA_RETURN_DOMAIN' => 'SINA_RETURN_URL',
+  'CUSTOM_URL_DEPR' => '/',
+  'CUSTOM_URL_SUFFIX' => '.html',
+  'CUSTOM_URL_MODEL' => '2',
+  'COMMENT_ON_OFF' => '1',
+  'COMMENT_VERIFY' => '1',
+  'COMMENT_VERIFY_ADV' => '0',
+  'COMMENT_USER_NAME' => '1',
+  'COMMENT_USER_EMAIL' => '1',
+  'COMMENT_EXAMINATION' => '0',
+  'COMMENT_LIST_COUNT' => '5',
+  'COMMENT_TEXT_LENGTH' => '6',
+  'COMMENT_TEXT_SENSITIVE' => '123
+fuck
+nima
+擦
+二货
+去死吧',
+);

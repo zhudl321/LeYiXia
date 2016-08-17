@@ -1,0 +1,76 @@
+<div id="alert_box" style="display:none;">
+  <div class="alert_bg"></div>
+  <div class="huotu_dialog" style="width: 638px; height: 532px; left: 50%; top: 50%; margin-left: -318.5px; margin-top: -266px; display: block; ">
+    <div class="huotu_dialog_wrap" style="width: 638px; height: 532px; ">
+      <div class="huotu_dialog_title">分享网上图片</div>
+      <div class="huotu_dialog_content">
+        <div id="add_pin_box" class="dialog_find_img">
+          <div class="dialog_content">
+            <div class="fing_img_left">
+              <div class="pin_pic"><span><img class="fixedImg" src="__SUCAI__/{$data|get_img=filename}" style="margin-top: 0px; display: inline; "></span></div>
+              <p><a href="javascript:;" class="reUpload" style="display: inline; "></a></p>
+            </div>
+            <div class="find_img_right">
+             <form id="forminfo">
+              <input type="hidden" name="img" value="{$data}" />
+              <input type="hidden" name="img_type" value="1" />
+              <input type="hidden" name="type" value="sucai"/>
+              <div id="c_tag_wrap">
+                <div class="board_name_label">标题<span>（提示：一个牛逼的标题才能更吸引人哦.）</span></div>
+                <div class="create_tag">
+                  <input type="text" name="title" placeholder="请输入标题" id="titleinput">
+                </div>
+              </div>
+              <div id="c_tag_wrap">
+                <div class="board_name_label">标签<span>（如：吐槽、屌丝、大神）</span></div>
+                <div class="create_tag">
+                  <input type="text" name="tag" placeholder="多个标签用空格隔开" onfocus="javascript:$('.choose_tag').fadeIn(200);" onblur="javascript:$('.choose_tag').fadeOut(200);" id="taginput">
+                  <div class="choose_tag" style="display: none; ">
+                    <p class="tag_content"><volist name='hot_tag' id='h_t'>
+                    <a href="javascript:;" onClick="Le_Append_Tag('{$h_t.name}');">{$h_t.name}</a>
+                    </volist>
+                    </p>
+                    <p style="text-align:center"><a href="javascript:;" class="confirm close" onclick="javascript:$('.choose_tag').fadeOut(200);"></a><span class="error" style="color:red;line-height:25px;"></span></p>
+                  </div>
+                </div>
+              </div>
+             
+                <div class="board_name_label">内容<span>（写点介绍,图文并茂的内容更受乐友欢迎哦）</span></div>
+                <textarea id="content" name="content" placeholder="为它写个牛逼的乐篇章吧..."></textarea>
+                <present name='Think.session.token'>
+                <p class="sync_bar_title" style="display: block; ">分享到</p>
+                <div class="sync_bar" style="display: block; ">
+                <span id="qq_wrap" class="sync_wrap unbind">
+                  <input name="qq_check" id="qq_check" title="腾讯微博" value="qq" type="checkbox" disabled="disabled"  ck='0'>
+                  <label for="qq_check"><em>&nbsp;&nbsp;</em></label>
+                  <a class="hide_link" target="_blank" href="javascript:;" onclick="Le_Share_sns('qq_wrap','qq_check');" style="display:inline; "></a>
+                </span>
+                <span id="sina_wrap" class="sync_wrap unbind">
+                  <input name="sina_check" type="checkbox" disabled="disabled" id="sina_check" title="新浪微博" value="sina" ck='0'>
+                  <label for="sina_check"><em>&nbsp;</em></label>
+                  <a class="hide_link" target="_blank" href="javascript:;" onclick="Le_Share_sns('sina_wrap','sina_check');" style="display: inline; "></a>
+                </span>
+                <span id="qzone_wrap" class="sync_wrap unbind">
+                  <input name="qzone_check" id="qzone_check" title="QQ空间" value="qzone" type="checkbox" disabled="disabled"  ck='0'>
+                  <label for="digu_check"><em>&nbsp;&nbsp;</em></label>
+                  <a class="hide_link" target="_blank" href="javascript:;" onclick="Le_Share_sns('qzone_wrap','qzone_check');" style="display: inline; "></a>
+                </span>
+                
+                  <p class="t" style="display: none; font-size: 12px; line-height: 16px; ">收集到好东东，可以很方便地分享给朋友哦~</p>
+                </div>
+                </present>
+              </form>
+            </div>
+          </div>
+          <div class="huotu_dialog_bottom" style="_position:static">
+            <div class="fl" style="padding-left: 30px; display: none; " id="deleteBtnWrap"><a class="grayness_m_btn" href="javascript:void(0);" id="deletePinBtn">删除收集<em class="r"></em></a></div>
+            <div class="Submit">
+              <p class="error_tips fl" style="display: none; "></p>
+              <a href="javascript:void(0);" class="cancel grayness_m_btn" onClick="Close_box();">取消<span class="r"></span></a><a href="javascript:void(0);" class="editpage_submit common_m_btn" onclick="Le_Url_Post();">完成<em class="r"></em></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="huotu_dialog_close" title="关闭(ESC)" onClick="Close_box();"></div>
+    </div>
+  </div>
+</div>

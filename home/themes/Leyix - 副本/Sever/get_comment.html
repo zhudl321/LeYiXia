@@ -1,0 +1,33 @@
+<div class="divider"><span></span></div>
+<div class="well well-small">
+<empty name='Think.session.USERID'>
+  <div class="alert alert-error">您尚未登录，暂时无法发表评论。<a href="javascript:;" onClick="Le_Login();" class="highlight">立即登录</a></div>
+<else/>
+  <div class="enterMessage">
+  <form id="comment_form_{$id}">
+    <input type="text" id="comment-input-{$id}" name="comment" placeholder="请输入你的评论。。。。">
+    <input type="hidden" name="fid" id="fid_{$id}" value="0">
+    <input type="hidden" name="share_id" id="share_id_{$id}" value="{$id}">
+    <div class="sendBtn">
+      <input type="button" name="sendMessage" class="buttonS bLightBlue" onClick="Le_Add_Comment('{$id}');" value="提交">
+    </div>
+  </form>
+  </div>
+</empty>
+<ul class="userList" id="content-ul-list-{$id}">
+<volist name='list' id='vo'>
+<li style="padding:0px;">
+    <a href="{:U('/user/'.$vo['uid'].'')}" title="">
+        <img src="__AVATAR__/{$vo.uid|get_user=avatar}" style="width:40px;" alt="{$vo.uid|get_user=nick}">
+        <span class="contactName">
+            <strong>{$vo.uid|get_user=nick}<span style="display:none;">举报</span></strong>
+            <i>{$vo.comment}</i>
+        </span>
+        <span class="clear"></span>
+    </a>
+</li>
+</volist>
+</ul>
+  <div class="pull-right"><a href="#">查看更多</a>|<a  onClick="Le_Commen_hide('{$id}'); return false;" href="#">收起评论</a></div>
+   <div class="clear"></div>
+</div>
