@@ -363,7 +363,7 @@ body { position:relative; }
 .sub_page_content .zarkfx_pagination_default ul li  {float:none; display:inline; margin:0 5px;}
 .sub_page_content .zarkfx_pagination_default ul li a {display:inline; color:#888;float:none; text-shadow:0 2px 0 #fff; padding:6px 10px; background:#f2f2f2; border:1px solid #ccc; background:url(../images/pagination_bg.png) -2px center repeat-x transparent;  border-radius:4px; -webkit-border-radius:4px; -moz-border-radius:4px; font-weight:bold; line-height:25px; height:25px; overflow:hidden; _height:20px; }
 .sub_page_content .zarkfx_pagination_default ul li a:hover { color:#f5739f; box-shadow:0 2px 3px #ddd; -webkit-box-shadow:0 2px 3px #ddd; -moz-box-shadow:0 2px 3px #ddd; text-decoration:none;}
-.sub_page_content .zarkfx_pagination_default ul .zarkfx_pagination_current_page a { color:#f5739f; }
+.sub_page_content .zarkfx_pagination_default ul li .active { color:#f5739f; }
 
 /*Footer*/
 .footer { background:url(../images/footer_bg.png) bottom center repeat-x transparent; width:100%; height:70px; }
@@ -717,8 +717,8 @@ body { position:relative; }
 
 /*AD ELEMENT*/
 .ad_2d_box { margin-top:15px; margin-bottom:15px; padding:15px; }
-.ad_2d_box .ad_2d {width:112px; height:112px; background:url(../images/basic.png) -984px 0 no-repeat transparent; display:block; float:left; }
-.ad_2d_box .ad_2d_p {display:block; float:left; margin-left:12px; font-size:14px; line-height:24px; color:#888; width:85px; text-align:justify; position:relative; top:-2px; }
+.ad_2d_box .ad_2d {width:215px; height:215px;  display:block; float:left;}
+.ad_2d_box .ad_2d_p {display:block; float:left; margin-left:12px; font-size:14px; line-height:24px; color:#888; width:190px; text-align:justify; position:relative; top:-2px; }
 .ad_2d_box .ad_2d_p span {color:#f7689f; font-weight:bold; }
 
 .f_link_box { width:241px; padding:10px 0; margin-bottom:10px; }

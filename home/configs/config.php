@@ -55,16 +55,18 @@
     		   // ':name/page/:p\d'         =>'Index/index',
     		    'le/:id\d'                =>'Index/le' ,
     		    /***************************/
-    		    'good/:good/page/:p\d'       =>'Index/index',
-    		    'good/:good'                 =>'Index/index',   		   
-    		    'good/paeg/:p\d'             =>'Index/index',
-    		    'good'                       =>array('Index/index','good=1'),
-    		    'hot/:hot/page/:p\d'         =>'Index/index',
-    		    'hot/:hot'                   =>'Index/index',
-    		    'hot/page/:p\d'              =>array('Index/index','hot=1'),
-    		    'hot'                        =>array('Index/index','hot=1'),
-    		    'new/page/:p\d'              =>array('Index/index','new=1'),
-    		    'new'                        =>array('Index/index','new=1'),  		   
+
+    		    'new/page/:p\d'              =>array('Index/index','type=new'),
+    		    'new'                        =>array('Index/index','type=new'), 
+                        'day/page/:p\d'              =>array('Index/index','type=day'),
+                        'day'                        =>array('Index/index','type=day'), 
+                        'month/page/:p\d'              =>array('Index/index','type=month'),
+                        'month'                        =>array('Index/index','type=month'), 
+                        'week/page/:p\d'              =>array('Index/index','type=week'),
+                        'week'                        =>array('Index/index','type=week'), 
+                        'random'                        =>array('Index/index','type=random'), 
+                        'about/:type'               =>'About/index',
+
     		    /********************************************/
     		    'user/page/:uid\d/:p\d'                =>'My/userinfo',
     		    'user/:uid\d'                =>'My/userinfo',
@@ -74,12 +76,12 @@
     		    /*******************************************/
     		    'so/s'                         =>'So/key',
     		    /*******************************************/
-    		    'sucai'                      =>'Sucai/index',
-    		    'pic'                        =>'Index/pic',
-				'login/:type'               =>'Public/login',
-				'le_add'               =>'Le/add',
-                       'pull'             =>'Pull/index',
-			),    		
+                        'sucai'                      =>'Sucai/index',
+                        'pic'                        =>'Index/pic',
+                        'login/:type'               =>'Public/login',
+                        'le_add'               =>'Le/add',
+                        'pull'             =>'Pull/index',
+		),    		
     );
 	
     return array_merge( $config, $settings, $array, $mysql,$login);

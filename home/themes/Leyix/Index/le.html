@@ -1,151 +1,109 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-<title>{$le.title}-冷笑话,内涵图,搞笑图片,搞笑图片制作,笑话分享-乐一下</title>
-<meta name="keywords" content="{$le.title|word}"/>
-<meta name="description" content="{$le.content|strip_tags|str=0,100}"/>
-<link href="__CSS__/styles.css" rel="stylesheet" type="text/css">
-<include file='Public:common_file' />
+    <!-- initial set  -->
+    <meta http-equiv="x-ua-compatible" content="ie=7" />
+    <meta name="baidu-site-verification" content="h0fignccMW" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--seo -->
+    <title>{$title}冷笑话,神回复,搞笑,流行冷幽默-leyixia.cc</title>
+    <meta name="description" content="爱讲冷笑话的企鹅所在地,善于挖掘冷笑话,发挥冷笑话功力,一个冷笑话就能走天涯.只要听到一个冷笑话,就讲给他人听。2016最新最流行冷笑话,冷笑话其实很好笑,也经常听到别人讲冷笑话, 有人天生爱说冷笑话,痴迷讲冷笑话,人生其实就是一个冷笑话,冷笑话真的很冷啊." />
+    <meta name="keywords" content="冷笑话,最新冷笑话,经典冷笑话,冷笑话谜语,冷笑话大全,leyixia,冷漫画,冷视频,康康冷笑话,小白兔冷笑话,脑筋急转弯,搞笑短信,冷幽默,冷知识,冷图片,冷创意" />
+    <include file='Public:header' />
 </head>
-<body>
-<include file='Public:header' />
-<article>
-  <div class="container">
-    <div class="span8 row">
-      <div class="widget row-fluid">
-        <div class="whead">
-        <ul id="top_tag" class="tabs nav-tag" style="z-index:99; overflow:hidden;">
-          <volist name='hot_tag' id='t_n' offset="0" length='10'>
-            <li><a href="{:U('/tag/'.$t_n['name'].'')}">{$t_n.name}</a></li>
-         </volist>
-          </ul>
-          <div class="clear"></div>
-        </div>
-        <ul class="updates">
-          
-          <!--单条笑话-->
-          <li>
-            <div class="wNews"> <a href="{:U('/user/'.$le['uid'].'')}" title="" class="headline"><img class="le_img" src="__AVATAR__/{$le.uid|get_user=avatar}" alt="{$le.uid|get_user=nick}" style="width:40px;"></a>
-              <div class="announce"> <a href="#" title="">{$le.uid|get_user=nick}</a> <span>{$le.add_time|date='m-d H:i',###} 发布</span></div>
-              <div class="span12 mt10">
-                <h4 class="pt0 mb10"><i class="icon-quote-left"></i><a href="#">{$le.title}</a></h4>
-                <neq name="le.content" value=''>
-                  <p class="initialism" style="font-size:13px;">{$le.content}<i class="icon-quote-right"></i></p>
-                </neq>
-                <p class="m10">
-                  <gt name='le.img_id' value='0'> <a href="{:U('/le/'.$more['next'].'')}"><img class="le_img img-polaroid" src="__IMG__/{$le.img_id|get_img=filename}" alt="{$le.title}"></a> </gt>
-                </p>
-                <div>
-                  <volist name='tags' id='l_t'> <a class="mr10" href="{:U('/tag/'.get_tag($l_t['tag_id'],name).'')}"><i class="icon-tag icon-white"></i>{$l_t.tag_id|get_tag=name}</a> </volist>
-                </div>
-              </div>
+
+<body id="body">
+    <div id="wrap">
+        <div id="main">
+            <include file='Public:nav' />
+
+            <div class="pager clearfix" style="margin:-5px 0 15px 0;">
+                <a href="{:U('/le/'.$more['up'].'')}" class="prev">上一条</a>
+                <a href="{:U('/le/'.$more['next'].'')}" class="next">下一条</a>
             </div>
-            <span class="clear"></span>
-            <div class="mt10 mb10">
-              <div class="span9"> <a href="javascript:;" class="btn btn-mini btn-info" onClick="Le_Share_click(this,'{$le.id}','le');"><i class="icon-thumbs-up-alt"></i>顶(<span>{$le.le}</span>)</a> <a href="javascript:;" class="btn btn-mini ml5" onClick="Le_Share_click(this,'{$le.id}','nu');"><i class=" icon-thumbs-down-alt icon-1x"></i>踩(<span>{$le.nu}</span>)</a> <a href="javascript:;" class="btn btn-mini btn-warning pull-right" onClick="Le_Share_fav(this,'{$le.id}')"><i class="icon-folder-open-alt  icon-1x"></i><span>收藏</span></a> <a href="javascript:;" class="btn btn-mini btn-success  pull-right mr10" onClick="javascript:$('#comment-input-{$le.id}').focus();" ><i class="icon-comments-alt icon-1x "></i>评论 (<span>{$le.comment_count}</span>)</a></div>
-              <div class="alignCenter span3" style="max-height:25px; margin-left:10px;"> 
-                <!-- Baidu Button BEGIN -->
-                <div id="bdshare" class="bdshare_b" style="line-height: 12px;" data="{
-'text':'#乐一下搞笑#:《{$le.title}》',
-<gt name='le.img_id' value='0'>'pic':'http://{$Think.server.server_name}__IMG__/{$le.img_id|get_img=filename}',</gt>
-'url':'http://{$Think.server.server_name}{:U('/le/'.$le['id'].'')}',
-'title':'乐一下搞笑分享',
-'bdDes':'{$le.content|str=0,100}',
-'bdComment':'乐一下搞笑,冷笑话,内涵图,搞笑图片,笑
-                 }"> <img src="__PUBLIC__/home/images/type-button-1.jpg" /> </div>
-                <!-- Baidu Button END --> 
-              </div>
-              <div class="clear"></div>
+
+
+            <div class="joke_wrap clearfix" style="padding-bottom:20px;">
+                <ul class="joke_ul left">
+                    <li class="joke_li" style="margin-bottom:0;">
+                        <div class="j_can clearfix">
+                            <div class="type_box hidden">
+                                <span></span>
+                            </div>
+                            <div class="para_box corner8px" fx="corner[radius=8]">
+                                <div onmouseover="showReportBtns(this)" onmouseout="hideReportBtns(this)">
+                                    <div class="para_can" id="joke_content_{$le.id}">
+                                            <pre js="joke_summary"><span class="first_char">{$le.first_char}</span>{$le.content}</pre>
+                                    </div>
+
+                                    <div class="para_info clearfix">
+                                        <div class="user_info">
+                                            <img src="__AVATAR__/{$le.avatar}" class="corner4px left" height="40" width="40">
+                                            <a href="{:U('/user/'.$le['uid'].'')}">床前明月光</a>
+                                            <p>{$le.date}</p>
+                                        </div>
+                                        <div class="para_tool">
+                                            <a href="javascript:;" js="report_joke" onclick="JOKE.openReportJokeBox(this, {$le.id}, 'report_joke');return false;" style="visibility: hidden; display: block;" showforothers="{$le.id}">
+                                                <span>举报</span>
+                                            </a>
+                                            <a href="javascript:void(0)" report="like_joke" jokeid="{$le.id}">
+                                                <span>顶</span>
+                                                <span>({$le.le})</span>
+                                            </a>
+                                            <a href="javascript:void(0)" report="unlike_joke" jokeid="{$le.id}">
+                                                <span>踩</span>
+                                                <span>({$le.nu})</span>
+                                            </a>
+                                            <div class="share_block">
+                                                <span js="share_btn" joke_id="{$le.id}">分享</span>
+                                                <div id="share_box_225304" fx="corner[radius=4]" class="share corner4px clearfix hidden" style="opacity: 0;">
+                                                    <a fx="share[site=sinaweibo; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; appkey=2145236240; ralateUid=1642635773]" class="sina" title="分享到新浪微博" style="margin-left:0;"></a>
+                                                    <a fx="share[site=tencentweibo; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; appkey=801137460; assname=30818627]" class="qq" title="分享到腾讯微博"></a>
+                                                    <a fx="share[site=renren; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; ]" class="renren" title="分享到人人"></a>
+                                                    <span class="tri"></span>
+                                                </div>
+                                            </div>
+                                            <a>
+                                                <span>评论</span>
+                                                <span id="show_comment_count_{$le.id}">({$le.comment_count})</span>
+                                                <span class="tri" fx="ie6png" js="comment_line_{$le.id}"></span>
+                                            </a>
+                                            <input type="hidden" id="comment_count_{$le.id}" value="9" autocomplete="off">
+                                        </div>                     
+                                   </div>
+                                           <div class="j_comment" id="j_comment_{$le.id}">
+                                                  <!--PC版-->
+                                            <div id="SOHUCS" sid="{$le.id}"></div>
+                                            <script charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/changyan.js" ></script>
+                                            <script type="text/javascript">
+                                            window.changyan.api.config({
+                                            appid: 'cysblNhW2',
+                                            conf: 'prod_aca5675a3e09ca09e0e4a773c66a33cf'
+                                            });
+                                            </script>                                
+                                        </div> 
+                               </div>
+                           </div>
+                           <div class="bottom_fill left">
+                               <span class="bottom_left" fx="ie6png"></span>
+                               <span class="bottom_mid" fx="ie6png"></span>
+                               <span class="bottom_right" fx="ie6png"></span>
+                           </div>
+                       </div>
+                    </li>
+
+                </ul>
             </div>
-          </li>
-          <!--单条笑话-->
-        </ul>
-      </div>
-      <!--上下条笑话-->
-      <div class="m10 widget row-fluid">
-        <div class="span7 offset1 m10"><a href="{:U('/le/'.$more['up'].'')}" <eq name='more.up' value=''>onClick="return false"</eq> class="btn btn-large btn-warning <eq name='more.up' value=''>disabled</eq>"><i class="icon-arrow-left"></i>上一条笑话</a> </div>
-        <div class="span4 m10"> <a href="{:U('/le/'.$more['next'].'')}" <eq name='more.next' value=''>onClick="return false"</eq> class="btn btn-large btn-warning <eq name='more.next' value=''>disabled</eq>">下一条笑话 <i class="icon-arrow-right"></i></a> </div>
-        <div class="clear"></div>
-      </div>
-      <!--上下条笑话--> 
-      
-      <!--广告区域-->
-      <div class="widget"> <img src="__PUBLIC__/home/images/20130806214350.png"> </div>
-      <!--广告区域--> 
-      <!--评论区-->
-      <div id="comment-" class="mt10">
-        <div class=" well">
-          <div class="enterMessage">
-            <form id="comment_form_{$le.id}">
-            <input type="text" id="comment-input-{$le.id}" name="comment" placeholder="请输入你的评论。。。。" onFocus="Le_Cklogin();">
-            <input type="hidden" name="fid" id="fid_{$le.id}" value="0">
-            <input type="hidden" name="share_id" id="share_id_{$le.id}" value="{$le.id}">
-            <div class="sendBtn">
-              <input type="button" name="sendMessage" class="buttonS bLightBlue" onClick="Le_Add_Comment('{$le.id}');" value="提交">
-            </div>
-          </form>
+          <div class="pager left">
+              <a href="{:U('/le/'.$more['up'].'')}" class="prev">上一条</a>
+              <a href="{:U('/le/'.$more['next'].'')}" class="next">下一条</a>
           </div>
-          <div id="general" style="display: block; " class="active">
-            <ul class="userList" id="content-ul-list-{$le.id}">
-              <volist name='list.list' id='vo'>
-                <li style="padding:0px;"> <a href="{:U('/user/'.$vo['uid'].'')}" title=""> <img src="__AVATAR__/{$vo.uid|get_user=avatar}" style="width:40px;" alt="{$vo.uid|get_user=nick}"> <span class="contactName"> <strong>{$vo.uid|get_user=nick}<span style="display:none;">举报</span></strong> <i>{$vo.comment}</i> </span> <span class="clear"></span> </a> </li>
-              </volist>
-            </ul>
-            <div class="clear"></div>
-          </div>
-        </div>
-      </div>
-      <div class="pagination">
-        <ul class="pages">
-         {$list.page}
-        </ul>
-      </div>
-      <!--评论区--> 
-    </div>
-    <div class="span4 box-right">
-      <div class="widget box-right-login">
-        <ul class="middleNavS">
-          <li><a href="javascript:;" onClick="Le_Add();" class="tipN" original-title="Add an article"><img src="__PUBLIC__/home/images/add.png" alt=""></a></li>
-        </ul>
-      </div>
-      <div class="widget">
-        <div class="span2 mt20"> <a class="btn btn-mini btn-info disabled">腾讯微博</a> <a class="btn btn-mini btn-danger disabled">新浪微博</a> <a class="btn mt5 btn-mini btn-warning disabled">Q Q 空间</a> <a class="btn mt5 btn-mini btn-inverse disabled">RSS订阅</a> </div>
-        <img src="__PUBLIC__/home/images/20130806175814.jpg" class="m10"> <span class="clear"></span> </div>
-      <!--<div class="text-center widget" align="center"><img src="__PUBLIC__/home/images/20130806172922.jpg" style="height:249px;"> </div>
-      <div class="text-center widget" align="center"><img src="__PUBLIC__/home/images/20130806172940.jpg" style="height:249px;"> </div>-->
-      
-      <!--pin-->
-      <div id="r-box" data="">
-        <div class="text-center widget" align="center">
-        <script type="text/javascript">
-     document.write('<a style="display:none!important" id="tanx-a-mm_36039004_4154872_13502709"></a>');
-     tanx_s = document.createElement("script");
-     tanx_s.type = "text/javascript";
-     tanx_s.charset = "gbk";
-     tanx_s.id = "tanx-s-mm_36039004_4154872_13502709";
-     tanx_s.async = true;
-     tanx_s.src = "http://p.tanx.com/ex?i=mm_36039004_4154872_13502709";
-     tanx_h = document.getElementsByTagName("head")[0];
-     if(tanx_h)tanx_h.insertBefore(tanx_s,tanx_h.firstChild);
-	</script>
-        </div>
-        <div class="widget">
-          <div class="whead">
-            <h6 style="float:left; margin:10px;"><i class="icon-tags"></i>热门标签</h6>
-            <a class="btn btn-mini btn-link pull-right mt10 mr5"><i class="icon-refresh"></i>换一换</a>
-            <div class="clear"></div>
-          </div>
-          <div class="ui-icon-tag tagsinput">
-            <volist name='hot_tag' id='l_h_t'> <a href="{:U('/tag/'.$l_h_t['name'].'')}"><span class="tag">{$l_h_t.name}</span></a> </volist>
-          </div>
-        </div>       
-        <!--pin--> 
-      </div>
-    </div>
-  </div>
-</article>
-<include file='Public:footer' />
+</div>
+        <include file='Public:right' />
+</div>
+</div>
+        <include file='Public:footer' />
+</div>
+
 </body>
 </html>

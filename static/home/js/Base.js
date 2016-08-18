@@ -331,7 +331,7 @@ function hideReportBtns(obj){
 
 function reportJoke(obj){
     var $this = $(obj);
-    var back_text, faild_text;
+    var back_text, faild_text,type;
     var item_type = $this.attr('report');
     if (item_type  === 'report_joke' ){
         back_text  = '收到';
@@ -340,28 +340,29 @@ function reportJoke(obj){
         back_text  = '收到';
         faild_text = '举报过';
     }else if (item_type.indexOf('like_') === 0 ){
+        type = 'le';
         back_text = '已顶';
         faild_text = '顶过';
     }else if (item_type.indexOf('unlike_') === 0 ){
+        type = 'nu';
         back_text = '已踩';
         faild_text = '踩过';
     };
 
 
-    ZarkF.login(function(){
         var data = {
-            item_type:      item_type,
-            joke_id:        $this.attr('jokeid'),
-            comment_id:     $this.attr('commentid')
+            type:      type,
+            share_id:        $this.attr('jokeid'),
         };
 
         $.ajax({
             data:       data,
             dataType:   'json',
             type:       'POST',
-            url:        '/lengxiaohuaapi/log',
-            success:    function(response_data){
-                if (response_data.success) {
+            url:        '/Sever/share_click',
+
+            success:    function(data){
+                if (data.status ==1) {
                     if (item_type.indexOf('like_')===0){
                         $this.html($this.html()+'+1').addClass('color_red');
                         $this.closest('div').find('[report^=unlike_]').html('<span></span>');
@@ -386,8 +387,6 @@ function reportJoke(obj){
             error:      function(){
             }
         });
-
-    });
 
 }
 
@@ -526,7 +525,7 @@ $(function(){
         $('#main_nav a[href*=gather]').addClass('selected');
     }else if(pathname.indexOf('/tie') === 0){ 
         $('#main_nav a[href*=tie]').addClass('selected');
-    }else if (pathname === '/' || pathname === '/text' || pathname === '/image' || pathname === '/video' || pathname.indexOf('/month') === 0 || pathname.indexOf('/24h') === 0 ){
+    }else if (pathname === '/' || pathname === '/text' || pathname === '/image' || pathname === '/video' || pathname.indexOf('/month') === 0 || pathname.indexOf('/day') === 0 ){
         $('#main_nav a[href="/"]').addClass('selected');
     };
 
@@ -541,8 +540,8 @@ $(function(){
     }else{
         $('#chose_type_div a:first').addClass('selected');
     }
-    if ( href.indexOf('24h') !== -1 ){
-        $('#chose_interval_div [href*=24h]').addClass('selected');
+    if ( href.indexOf('day') !== -1 ){
+        $('#chose_interval_div [href*=day]').addClass('selected');
     }else if( href.indexOf('weekly') !== -1 ){
         $('#chose_interval_div [href*=weekly]').addClass('selected');
     }else if( href.indexOf('month') !== -1 ){
@@ -653,31 +652,7 @@ $(function(){
         }
     }
 
-    var _$ = $;
-    ZarkAPI.isLogin({callback: function(data){
-        if (data.state == true) {
-            _$('#user_info #home_link').html(data.user_name + ' 的主页').attr('href', '/user/'+ data.user_id);
-            _$('#user_info').show();
-        }else{
-            _$('#right_sign_box').show();
-        };
-        _$('#right_post_joke_btn').css('display', 'block');
 
-        ZarkF.setUserDatas('myid', data.user_id);
-        ZarkF.showForMe();
-        ZarkF.showForOthers();
-        ZarkF.showForLogin();
-        // 用户页面的显示，不能放到/js/User.js的onload函数，因为多个onload函数是并行的
-        if (ZarkF.getUserDatas('myid').toString() === _$('#user_id').val() ){
-            _$('#title2').html('我最近发表的笑话');
-            if (_$('#user_portrait').val() === '/img/page/default_user.png'){
-                _$('#tip_upload').show();
-            };
-        }else{
-            _$('#title2').html('TA最近发表的笑话');
-        };
-
-    }});
 
 });
 })();
