@@ -409,9 +409,11 @@ body { position:relative; }
 
 
 .joke_wrap .joke_li .para_box .para_can { width:100%; margin-bottom:15px; }
-.joke_wrap .joke_li .para_box .para_can pre { font-size:14px; color:#444444; line-height:28px; text-align:justify; margin-bottom:10px; width:100%; max-width:100%; white-space:pre-wrap; *white-space:pre; word-wrap:break-word; overflow:hidden; }
+.joke_wrap .joke_li .para_box .para_can pre { font-size:14px; color:#444444; line-height:28px; text-align:justify; margin:20px 0 10px 0; width:100%; max-width:100%; white-space:pre-wrap; *white-space:pre; word-wrap:break-word; overflow:hidden; }
 .joke_wrap .joke_li .para_box .para_can img {max-width:558px; _width:expression(this.scrollWidth > 558 ? "558px" : (this.scrollWidth < 1? "1px" : "auto")); }
-.joke_wrap .joke_li .para_box .para_can a { font-size:14px; color:#dd4d7e; float:right;  }
+.joke_wrap .joke_li .para_box .para_can a {color:#444; font-size: 22px;}
+.joke_wrap .joke_li .para_box .para_can span {color:#444; font-size: 22px;}
+.joke_wrap .joke_li .para_box .para_can a:hover {color:#ddb57a;}
 .joke_wrap .joke_li .para_box .para_can .toggle_fold {line-height:14px; font-size:12px; }
 
 

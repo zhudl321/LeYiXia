@@ -7,36 +7,59 @@
  */
 class IndexAction extends BaseAction {
 	public function index(){
+
 		$showbox = 1;
 		$m=M('share');
-		$type=I('get.type');
+		$type=I('get.type','new');
 		$where =array();
 		$where['status'] = 1;
 		switch ($type){
 			case 'new':
 				$showbox = 0;
-				$where['add_time']=array('gt',0);
+				$where['add_time']=array('between',array(get_day(30),get_day(-1)));
 				$order='add_time DESC';
 				$url='new/page';
-				$title='最新-';break;
+				$title='乐一下 -';break;
 			case 'day':
 				$where['add_time']=array('between',array(get_day(0),get_day(-1)));
 				$order='le DESC';
 				$url='day/page';
-				$title='本天最乐-';break;
+				$title='本天最乐 -';break;
+			case 'week':
+				$where['add_time']=array('between',array(get_day(7),get_day(-1)));
+				$order='le DESC';	
+				$url='week/page';
+				$title='本周最乐 -';break;
 			case 'month':
 				$where['add_time']=array('between',array(get_day(30),get_day(-1)));
 				$order='le DESC';
 				$url='month/page';
-				$title='本月最乐-';break;
+				$title='本月最乐 -';break;
+			case 'shenhuifu':
+				$showbox = 0;
+				$where['type']= 2;
+				$where['add_time']=array('between',array(get_day(30),get_day(-1)));
+				$order='add_time DESC';	
+				$url='shenhuifu/page';
+				$title='神回复 -';break;
+
+			case 'duanzi':
+				$showbox = 0;
+				$where['type']= 3;
+				$where['add_time']=array('between',array(get_day(30),get_day(-1)));
+				$order='add_time DESC';	
+				$url='duanzi/page';
+				$title='段子手 -';break;
+
 			case 'random':
 				$showbox = 0;
-				$title='随机显示-';break;
-			default :
-				$where['add_time']=array('between',array(get_day(0),get_day(-1)));
-				$order='le DESC';	
-				$url='week/page';
-				$title='本周最乐-';break;
+				$title='随机显示 -';break;
+			default:
+				$showbox = 0;
+				$where['add_time']=array('between',array(get_day(30),get_day(-1)));
+				$order='add_time DESC';
+				$url='new/page';
+				$title='乐一下 -';break;			
 		}
 
 		$limit=12;
@@ -57,7 +80,7 @@ class IndexAction extends BaseAction {
 			$avatar = get_user($v['uid'],'avatar');
 			$data['list'][$k]['avatar'] = $avatar?$avatar:"default.png";
 			$nick = get_user($v['uid'],'nick');
-			$data['list'][$k]['nick'] = $nick?$nick:"网友";
+			$data['list'][$k]['nick'] = $nick?$nick:"乐友";
 			$data['list'][$k]['date'] = time_tran($v['add_time']);
 		}
 		
@@ -65,7 +88,6 @@ class IndexAction extends BaseAction {
 		$this->assign('title',$title);
 		$this->assign('type',$type);
 		$this->assign('showbox',$showbox);
-		//$this->hot_tag(20);
 		$this->display();
 	}
 	public function le(){
@@ -75,13 +97,21 @@ class IndexAction extends BaseAction {
 			$this->error('OMG..这被吃掉了啊');
 		}else{
 			$info['first_char'] = str($info['content'],0,1,"utf-8",false);
-			$info['content'] = str($info['content'],1,null,"utf-8",false);
+			$info['contents'] = str($info['content'],1,null,"utf-8",false);
 			$avatar = get_user($info['uid'],'avatar');
 			$info['avatar'] = $avatar?$avatar:"default.png";
 			$nick = get_user($info['uid'],'nick');
 			$info['nick'] = $nick?$nick:"网友";
 			$info['date'] = time_tran($info['add_time']);
 		}
+
+		if($info['title'] ==''){
+			$title= str($info['content'],0,20,"utf-8",false);
+		}else{
+			$title =$info['title'];
+		}
+
+		$this->assign('title',$title);
 		$this->assign('le',$info);
 		$m=M('share_comment');
 		$where['share_id']=$id;

@@ -515,18 +515,18 @@ $(function(){
         $('#main_nav a[href*=judge]').addClass('selected');
     }else if(pathname.indexOf('/popular') === 0){ 
         $('#main_nav a[href*=popular]').addClass('selected');
-    }else if(pathname.indexOf('/new') === 0){ 
-        $('#main_nav a[href*=new]').addClass('selected');
-    }else if(pathname.indexOf('/shit') === 0){ 
-        $('#main_nav a[href*=shit]').addClass('selected');
+    }else if(pathname.indexOf('/week') === 0 || pathname.indexOf('/day') === 0 || pathname.indexOf('/month') === 0){ 
+        $('#main_nav a[href*=week]').addClass('selected');
+    }else if(pathname.indexOf('/shenhuifu') === 0){ 
+        $('#main_nav a[href*=shenhuifu]').addClass('selected');
     }else if(pathname.indexOf('/random') === 0){ 
         $('#main_nav a[href*=random]').addClass('selected');
-    }else if(pathname.indexOf('/gather') === 0){ 
-        $('#main_nav a[href*=gather]').addClass('selected');
-    }else if(pathname.indexOf('/tie') === 0){ 
-        $('#main_nav a[href*=tie]').addClass('selected');
-    }else if (pathname === '/' || pathname === '/text' || pathname === '/image' || pathname === '/video' || pathname.indexOf('/month') === 0 || pathname.indexOf('/day') === 0 ){
-        $('#main_nav a[href="/"]').addClass('selected');
+    }else if(pathname.indexOf('/duanzi') === 0){ 
+        $('#main_nav a[href*=duanzi]').addClass('selected');
+    }else if(pathname.indexOf('/daily') === 0){ 
+        $('#main_nav a[href*=daily]').addClass('selected');
+    }else{
+        $('.zhuye').addClass('selected');
     };
 
     // 类别和时间选择样式
@@ -542,8 +542,8 @@ $(function(){
     }
     if ( href.indexOf('day') !== -1 ){
         $('#chose_interval_div [href*=day]').addClass('selected');
-    }else if( href.indexOf('weekly') !== -1 ){
-        $('#chose_interval_div [href*=weekly]').addClass('selected');
+    }else if( href.indexOf('week') !== -1 ){
+        $('#chose_interval_div [href*=week]').addClass('selected');
     }else if( href.indexOf('month') !== -1 ){
         $('#chose_interval_div [href*=month]').addClass('selected');
     }else{

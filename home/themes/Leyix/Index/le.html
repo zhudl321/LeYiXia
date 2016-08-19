@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <!-- initial set  -->
     <meta http-equiv="x-ua-compatible" content="ie=7" />
-    <meta name="baidu-site-verification" content="h0fignccMW" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <!--seo -->
-    <title>{$title}冷笑话,神回复,搞笑,流行冷幽默-leyixia.cc</title>
-    <meta name="description" content="爱讲冷笑话的企鹅所在地,善于挖掘冷笑话,发挥冷笑话功力,一个冷笑话就能走天涯.只要听到一个冷笑话,就讲给他人听。2016最新最流行冷笑话,冷笑话其实很好笑,也经常听到别人讲冷笑话, 有人天生爱说冷笑话,痴迷讲冷笑话,人生其实就是一个冷笑话,冷笑话真的很冷啊." />
-    <meta name="keywords" content="冷笑话,最新冷笑话,经典冷笑话,冷笑话谜语,冷笑话大全,leyixia,冷漫画,冷视频,康康冷笑话,小白兔冷笑话,脑筋急转弯,搞笑短信,冷幽默,冷知识,冷图片,冷创意" />
+    <title>{$title} - 乐一下 - leyixia.cc</title>
+    <meta name="keywords" content="{:C('SITE_KEYWORDS')}"/>
+    <meta name="description" content="{$le.content}" />
     <include file='Public:header' />
 </head>
 
@@ -30,22 +27,20 @@
                             <div class="type_box hidden">
                                 <span></span>
                             </div>
-                            <div class="para_box corner8px" fx="corner[radius=8]">
+                            <div class="para_box corner8px">
                                 <div onmouseover="showReportBtns(this)" onmouseout="hideReportBtns(this)">
                                     <div class="para_can" id="joke_content_{$le.id}">
-                                            <pre js="joke_summary"><span class="first_char">{$le.first_char}</span>{$le.content}</pre>
+                                            <span>{$le.title}</span>
+                                            <pre js="joke_summary"><span class="first_char">{$le.first_char}</span>{$le.contents}</pre>
                                     </div>
 
                                     <div class="para_info clearfix">
                                         <div class="user_info">
                                             <img src="__AVATAR__/{$le.avatar}" class="corner4px left" height="40" width="40">
-                                            <a href="{:U('/user/'.$le['uid'].'')}">床前明月光</a>
+                                            <a href="{:U('/user/'.$le['uid'].'')}">{$le.nick}</a>
                                             <p>{$le.date}</p>
                                         </div>
                                         <div class="para_tool">
-                                            <a href="javascript:;" js="report_joke" onclick="JOKE.openReportJokeBox(this, {$le.id}, 'report_joke');return false;" style="visibility: hidden; display: block;" showforothers="{$le.id}">
-                                                <span>举报</span>
-                                            </a>
                                             <a href="javascript:void(0)" report="like_joke" jokeid="{$le.id}">
                                                 <span>顶</span>
                                                 <span>({$le.le})</span>
@@ -54,15 +49,6 @@
                                                 <span>踩</span>
                                                 <span>({$le.nu})</span>
                                             </a>
-                                            <div class="share_block">
-                                                <span js="share_btn" joke_id="{$le.id}">分享</span>
-                                                <div id="share_box_225304" fx="corner[radius=4]" class="share corner4px clearfix hidden" style="opacity: 0;">
-                                                    <a fx="share[site=sinaweibo; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; appkey=2145236240; ralateUid=1642635773]" class="sina" title="分享到新浪微博" style="margin-left:0;"></a>
-                                                    <a fx="share[site=tencentweibo; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; appkey=801137460; assname=30818627]" class="qq" title="分享到腾讯微博"></a>
-                                                    <a fx="share[site=renren; content_selector=#joke_content_225304 &amp;[js=joke_summary&amp;]; pic_selector=#joke_content_225304 &amp;[js_share=image&amp;]; ]" class="renren" title="分享到人人"></a>
-                                                    <span class="tri"></span>
-                                                </div>
-                                            </div>
                                             <a>
                                                 <span>评论</span>
                                                 <span id="show_comment_count_{$le.id}">({$le.comment_count})</span>
@@ -104,6 +90,5 @@
 </div>
         <include file='Public:footer' />
 </div>
-
 </body>
 </html>

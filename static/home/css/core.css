@@ -43,7 +43,7 @@ h1, h2 { color: #232323;font-weight:normal; }
 h1 { font-size: 20px; }
 h2 { font-size: 14px }
 a { color: #00b4ff; text-decoration: none;}
-a:hover {cursor:pointer; text-decoration:underline;}
+a:hover {cursor:pointer; text-decoration:none;color: #ddb57a;}
 textarea { border: 1px solid #ccc; overflow: auto; padding: 4px 3px }
 .error { color: #f66 }
 .right { float:right;}

@@ -13,12 +13,12 @@ function is_mobile(){
     return $is_mobile;
 }
 if(is_mobile()){ //跳转至wap分组
-    define('THEME_NAME','mobile');
+    define('THEME_NAME','Leyix');
 }else{
     define('THEME_NAME','Leyix');      
 }
 //调试模式
-	define( 'APP_DEBUG',		true );
+	define( 'APP_DEBUG',		false );
 	define( 'NO_CACHE_RUNTIME',	true );
 	
 	//主配置项目
